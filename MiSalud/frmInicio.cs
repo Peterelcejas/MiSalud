@@ -13,6 +13,7 @@ namespace MiSalud
         private void Form1_Load(object sender, EventArgs e)
         {
             lblkRegistrar.LinkBehavior = LinkBehavior.NeverUnderline;
+            this.Icon = Properties.Resources.H_T_Misalud_logo;
         }
 
         private void lblkRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
