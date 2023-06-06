@@ -69,15 +69,5 @@ namespace MiSalud.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
-        /// </summary>
-        internal static System.Drawing.Icon ojo_ver {
-            get {
-                object obj = ResourceManager.GetObject("ojo_ver", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
     }
 }

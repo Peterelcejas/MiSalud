@@ -16,6 +16,7 @@ namespace MiSalud
         public frmRegistrar()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.H_T_Misalud_logo;
         }
 
         private void frmRegistrar_Load(object sender, EventArgs e)
