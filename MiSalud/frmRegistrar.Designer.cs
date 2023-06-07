@@ -32,13 +32,13 @@
             lblNombreUsu = new Label();
             lblContrasegna = new Label();
             btnCancelar = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
+            lblNombre = new Label();
+            lblApellidos = new Label();
+            lblFechaNac = new Label();
+            lblDireccion = new Label();
+            lblCiudad = new Label();
+            lblTelefono = new Label();
+            lblEmail = new Label();
             txtUsuario = new TextBox();
             txtContrasegna = new TextBox();
             txtNombre = new TextBox();
@@ -101,75 +101,75 @@
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // label1
+            // lblNombre
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(32, 107);
-            label1.Name = "label1";
-            label1.Size = new Size(94, 30);
-            label1.TabIndex = 15;
-            label1.Text = "Nombre:";
+            lblNombre.AutoSize = true;
+            lblNombre.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNombre.Location = new Point(32, 107);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(94, 30);
+            lblNombre.TabIndex = 15;
+            lblNombre.Text = "Nombre:";
             // 
-            // label2
+            // lblApellidos
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(32, 147);
-            label2.Name = "label2";
-            label2.Size = new Size(103, 30);
-            label2.TabIndex = 16;
-            label2.Text = "Apellidos:";
+            lblApellidos.AutoSize = true;
+            lblApellidos.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblApellidos.Location = new Point(32, 147);
+            lblApellidos.Name = "lblApellidos";
+            lblApellidos.Size = new Size(103, 30);
+            lblApellidos.TabIndex = 16;
+            lblApellidos.Text = "Apellidos:";
             // 
-            // label3
+            // lblFechaNac
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(32, 188);
-            label3.Name = "label3";
-            label3.Size = new Size(210, 30);
-            label3.TabIndex = 17;
-            label3.Text = "Fecha de nacimiento:";
+            lblFechaNac.AutoSize = true;
+            lblFechaNac.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFechaNac.Location = new Point(32, 188);
+            lblFechaNac.Name = "lblFechaNac";
+            lblFechaNac.Size = new Size(210, 30);
+            lblFechaNac.TabIndex = 17;
+            lblFechaNac.Text = "Fecha de nacimiento:";
             // 
-            // label4
+            // lblDireccion
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(32, 230);
-            label4.Name = "label4";
-            label4.Size = new Size(105, 30);
-            label4.TabIndex = 18;
-            label4.Text = "Direccion:";
+            lblDireccion.AutoSize = true;
+            lblDireccion.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDireccion.Location = new Point(32, 230);
+            lblDireccion.Name = "lblDireccion";
+            lblDireccion.Size = new Size(105, 30);
+            lblDireccion.TabIndex = 18;
+            lblDireccion.Text = "Direccion:";
             // 
-            // label5
+            // lblCiudad
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(32, 270);
-            label5.Name = "label5";
-            label5.Size = new Size(83, 30);
-            label5.TabIndex = 19;
-            label5.Text = "Ciudad:";
+            lblCiudad.AutoSize = true;
+            lblCiudad.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCiudad.Location = new Point(32, 270);
+            lblCiudad.Name = "lblCiudad";
+            lblCiudad.Size = new Size(83, 30);
+            lblCiudad.TabIndex = 19;
+            lblCiudad.Text = "Ciudad:";
             // 
-            // label6
+            // lblTelefono
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(32, 311);
-            label6.Name = "label6";
-            label6.Size = new Size(97, 30);
-            label6.TabIndex = 20;
-            label6.Text = "Telefono:";
+            lblTelefono.AutoSize = true;
+            lblTelefono.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTelefono.Location = new Point(32, 311);
+            lblTelefono.Name = "lblTelefono";
+            lblTelefono.Size = new Size(97, 30);
+            lblTelefono.TabIndex = 20;
+            lblTelefono.Text = "Telefono:";
             // 
-            // label7
+            // lblEmail
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(32, 353);
-            label7.Name = "label7";
-            label7.Size = new Size(68, 30);
-            label7.TabIndex = 21;
-            label7.Text = "Email:";
+            lblEmail.AutoSize = true;
+            lblEmail.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblEmail.Location = new Point(32, 353);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(68, 30);
+            lblEmail.TabIndex = 21;
+            lblEmail.Text = "Email:";
             // 
             // txtUsuario
             // 
@@ -292,13 +292,13 @@
             Controls.Add(txtNombre);
             Controls.Add(txtContrasegna);
             Controls.Add(txtUsuario);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lblEmail);
+            Controls.Add(lblTelefono);
+            Controls.Add(lblCiudad);
+            Controls.Add(lblDireccion);
+            Controls.Add(lblFechaNac);
+            Controls.Add(lblApellidos);
+            Controls.Add(lblNombre);
             Controls.Add(btnCancelar);
             Controls.Add(lblContrasegna);
             Controls.Add(lblNombreUsu);
@@ -319,13 +319,13 @@
         private Label lblNombreUsu;
         private Label lblContrasegna;
         private Button btnCancelar;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
+        private Label lblNombre;
+        private Label lblApellidos;
+        private Label lblFechaNac;
+        private Label lblDireccion;
+        private Label lblCiudad;
+        private Label lblTelefono;
+        private Label lblEmail;
         private TextBox txtUsuario;
         private TextBox txtContrasegna;
         private TextBox txtNombre;

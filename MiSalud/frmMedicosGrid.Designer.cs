@@ -31,10 +31,11 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dgvMedicos = new DataGridView();
             btnEliminar = new Button();
-            btnAceptar = new Button();
-            button1 = new Button();
+            btnAnyadir = new Button();
+            btnModificar = new Button();
             btnSalir = new Button();
             ID = new DataGridViewTextBoxColumn();
+            ID_USUARIO = new DataGridViewTextBoxColumn();
             NOMBRE = new DataGridViewTextBoxColumn();
             APELLIDOS = new DataGridViewTextBoxColumn();
             ESPECIALIDAD = new DataGridViewTextBoxColumn();
@@ -58,7 +59,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvMedicos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMedicos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMedicos.Columns.AddRange(new DataGridViewColumn[] { ID, NOMBRE, APELLIDOS, ESPECIALIDAD, CENTRO, CIUDAD, TELEFONO, EMAIL });
+            dgvMedicos.Columns.AddRange(new DataGridViewColumn[] { ID, ID_USUARIO, NOMBRE, APELLIDOS, ESPECIALIDAD, CENTRO, CIUDAD, TELEFONO, EMAIL });
             dgvMedicos.EnableHeadersVisualStyles = false;
             dgvMedicos.Location = new Point(12, 42);
             dgvMedicos.Name = "dgvMedicos";
@@ -81,33 +82,35 @@
             btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += btnEliminar_Click;
             // 
-            // btnAceptar
+            // btnAnyadir
             // 
-            btnAceptar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnAceptar.BackColor = Color.FromArgb(224, 224, 224);
-            btnAceptar.FlatStyle = FlatStyle.Flat;
-            btnAceptar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAceptar.ForeColor = Color.Black;
-            btnAceptar.Location = new Point(12, 400);
-            btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(120, 38);
-            btnAceptar.TabIndex = 15;
-            btnAceptar.Text = "Añadir";
-            btnAceptar.UseVisualStyleBackColor = false;
+            btnAnyadir.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAnyadir.BackColor = Color.FromArgb(224, 224, 224);
+            btnAnyadir.FlatStyle = FlatStyle.Flat;
+            btnAnyadir.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAnyadir.ForeColor = Color.Black;
+            btnAnyadir.Location = new Point(12, 400);
+            btnAnyadir.Name = "btnAnyadir";
+            btnAnyadir.Size = new Size(120, 38);
+            btnAnyadir.TabIndex = 15;
+            btnAnyadir.Text = "Añadir";
+            btnAnyadir.UseVisualStyleBackColor = false;
+            btnAnyadir.Click += btnAnyadir_Click;
             // 
-            // button1
+            // btnModificar
             // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button1.BackColor = Color.FromArgb(224, 224, 224);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(138, 400);
-            button1.Name = "button1";
-            button1.Size = new Size(120, 38);
-            button1.TabIndex = 17;
-            button1.Text = "Modificar";
-            button1.UseVisualStyleBackColor = false;
+            btnModificar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnModificar.BackColor = Color.FromArgb(224, 224, 224);
+            btnModificar.FlatStyle = FlatStyle.Flat;
+            btnModificar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnModificar.ForeColor = Color.Black;
+            btnModificar.Location = new Point(138, 400);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(120, 38);
+            btnModificar.TabIndex = 17;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = false;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnSalir
             // 
@@ -130,6 +133,13 @@
             ID.HeaderText = "ID";
             ID.Name = "ID";
             ID.Visible = false;
+            // 
+            // ID_USUARIO
+            // 
+            ID_USUARIO.DataPropertyName = "ID_USUARIO";
+            ID_USUARIO.HeaderText = "Id_usuario";
+            ID_USUARIO.Name = "ID_USUARIO";
+            ID_USUARIO.Visible = false;
             // 
             // NOMBRE
             // 
@@ -180,9 +190,9 @@
             BackColor = Color.Honeydew;
             ClientSize = new Size(800, 450);
             Controls.Add(btnSalir);
-            Controls.Add(button1);
+            Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
-            Controls.Add(btnAceptar);
+            Controls.Add(btnAnyadir);
             Controls.Add(dgvMedicos);
             Name = "frmMedicosGrid";
             Text = "Medicos";
@@ -195,10 +205,11 @@
 
         private DataGridView dgvMedicos;
         private Button btnEliminar;
-        private Button btnAceptar;
-        private Button button1;
+        private Button btnAnyadir;
+        private Button btnModificar;
         private Button btnSalir;
         private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn ID_USUARIO;
         private DataGridViewTextBoxColumn NOMBRE;
         private DataGridViewTextBoxColumn APELLIDOS;
         private DataGridViewTextBoxColumn ESPECIALIDAD;

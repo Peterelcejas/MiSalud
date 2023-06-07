@@ -88,9 +88,10 @@ namespace MiSalud
         {
             try
             {
-                VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text + "', '" + txtContrasegna.Text + "', 'Cliente')");
+                VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text + "', '" + txtContrasegna.Text + "', 2)");
                 VarGlobal.EjecutaSentencia("INSERT INTO Pacientes (nombre, apellidos, fecha_nacimiento, direccion, ciudad, telefono, email, certificado_vacunacion, id_usuario) " +
-                                              "VALUES ('" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + dtpNacimiento.Text.Substring(0, 10) + "', '" + txtDireccion.Text + "', '" + txtCiudad.Text + "', " + txtTelefono.Text + ", '" + txtEmail.Text + "', " + false + ", (SELECT MAX(id) FROM Usuarios))");
+                                              "VALUES ('" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + dtpNacimiento.Text.Substring(0, 10) + "', '" + txtDireccion.Text + "', '" +
+                                              txtCiudad.Text + "', " + txtTelefono.Text + ", '" + txtEmail.Text + "', " + false + ", (SELECT MAX(id) FROM Usuarios))");
 
                 return true;
             }
