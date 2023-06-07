@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrar));
             btnAceptar = new Button();
             lblNombreUsu = new Label();
             lblContrasegna = new Label();
@@ -191,7 +190,6 @@
             txtContrasegna.Name = "txtContrasegna";
             txtContrasegna.Size = new Size(377, 30);
             txtContrasegna.TabIndex = 25;
-            txtContrasegna.Text = "fdasdfç";
             txtContrasegna.UseSystemPasswordChar = true;
             // 
             // txtNombre
@@ -305,7 +303,6 @@
             Controls.Add(lblContrasegna);
             Controls.Add(lblNombreUsu);
             Controls.Add(btnAceptar);
-            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmRegistrar";
             Text = "Nuevo Usuario";
             FormClosing += frmRegistrar_FormClosing;

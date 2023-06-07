@@ -17,6 +17,7 @@ namespace MiSalud
         {
             InitializeComponent();
             this.Icon = Properties.Resources.H_T_Misalud_logo;
+            btnVer.Image = Properties.Resources.ojo_32;
         }
 
         private void frmRegistrar_Load(object sender, EventArgs e)

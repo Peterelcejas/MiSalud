@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicio));
             txtUsuario = new TextBox();
             txtContrasegna = new TextBox();
             btnConsectarse = new Button();
@@ -111,10 +110,9 @@
             Controls.Add(txtContrasegna);
             Controls.Add(txtUsuario);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(610, 377);
             Name = "frmInicio";
-            Text = "H.T.Misalud";
+            Text = "H.T.MiSalud";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
