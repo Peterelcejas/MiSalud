@@ -94,7 +94,7 @@ namespace MiSalud
             else if (!(txtNombre.Text.Length > 0 && txtApellidos.Text.Length > 0 && txtCiudad.Text.Length > 0 &&
                 txtCentro.Text.Length > 0 && txtTelefono.Text.Length > 0 && txtEmail.Text.Length > 0))
             {
-
+                MessageBox.Show("Tienes que rellenar todos los campos para crear la cuenta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -131,8 +131,17 @@ namespace MiSalud
         }
         private bool ConfirmarBorradoDatos()
         {
-            DialogResult result = MessageBox.Show("Se borrará los datos introducidos. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            return result == DialogResult.Yes;
+            if (this.Actualiza)
+            {
+                DialogResult result = MessageBox.Show("No se va a actualizar el medico. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                return result == DialogResult.Yes;
+            }
+            else 
+            {
+                DialogResult result = MessageBox.Show("Se borrará los datos introducidos. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                return result == DialogResult.Yes;
+            }
+            
         }
 
         private bool CamposLlenos()
