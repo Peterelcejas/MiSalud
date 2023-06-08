@@ -71,12 +71,32 @@ namespace MiSalud.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon historial_32 {
+            get {
+                object obj = ResourceManager.GetObject("historial_32", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap medicamentos_72 {
             get {
                 object obj = ResourceManager.GetObject("medicamentos_72", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon medico_32 {
+            get {
+                object obj = ResourceManager.GetObject("medico_32", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -97,6 +117,16 @@ namespace MiSalud.Properties {
             get {
                 object obj = ResourceManager.GetObject("ojo_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon paciente_32 {
+            get {
+                object obj = ResourceManager.GetObject("paciente_32", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

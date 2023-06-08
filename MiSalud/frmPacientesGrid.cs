@@ -15,7 +15,7 @@ namespace MiSalud
         public frmPacientesGrid()
         {
             InitializeComponent();
-            this.Icon = Properties.Resources.H_T_Misalud_logo;
+            this.Icon = Properties.Resources.paciente_32;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -33,8 +33,8 @@ namespace MiSalud
                 {
                     if (dgvPacientes.SelectedCells.Count > 0)
                     {
-                        int rowIndex = dgvPacientes.SelectedCells[0].RowIndex;
-                        DataTable tablaCitas = VarGlobal.EjecutaConsulta("SELECT * FROM CITAS LEFT JOIN PACIENTES ON CITAS.ID_PACIENTE = PACIENTES.ID WHERE PACIENTES.ID = " + dgvPacientes.Rows[rowIndex].Cells["ID"].Value.ToString());
+                        int fila = dgvPacientes.SelectedCells[0].RowIndex;
+                        DataTable tablaCitas = VarGlobal.EjecutaConsulta("SELECT * FROM CITAS LEFT JOIN PACIENTES ON CITAS.ID_PACIENTE = PACIENTES.ID WHERE PACIENTES.ID = " + dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
 
                         if (tablaCitas.Rows.Count > 0)
                         {
@@ -42,7 +42,7 @@ namespace MiSalud
                         }
                         else
                         {
-                            VarGlobal.EjecutaSentencia("DELETE FROM PACIENTES WHERE ID = " + dgvPacientes.Rows[rowIndex].Cells["ID"].Value.ToString());
+                            VarGlobal.EjecutaSentencia("DELETE FROM PACIENTES WHERE ID = " + dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
                             CargarGrid();
                         }
                     }
@@ -58,10 +58,10 @@ namespace MiSalud
         {
             if (dgvPacientes.SelectedCells.Count > 0)
             {
-                int rowIndex = dgvPacientes.SelectedCells[0].RowIndex;
+                int fila = dgvPacientes.SelectedCells[0].RowIndex;
                 frmGestionarPacientes frmGestionarPacientes = new frmGestionarPacientes();
                 frmGestionarPacientes.Actualiza = true;
-                frmGestionarPacientes.Paciente = Convert.ToInt32(dgvPacientes.Rows[rowIndex].Cells["ID"].Value.ToString());
+                frmGestionarPacientes.Paciente = Convert.ToInt32(dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
                 frmGestionarPacientes.ShowDialog();
                 CargarGrid();
             }
@@ -78,8 +78,24 @@ namespace MiSalud
         private void frmPacientesGrid_Load(object sender, EventArgs e)
         {
             CargarGrid();
+            foreach (DataGridViewRow fila in dgvPacientes.Rows)
+            {
+                DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)fila.Cells["btnHistorial"];
+
+                buttonCell.Value = "Ver Historial";
+            }
         }
 
+        private void dgvPacientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvPacientes.Columns["btnHistorial"].Index && e.RowIndex >= 0)
+            {
+                int fila = dgvPacientes.SelectedCells[0].RowIndex;
+                frmGridHistoriales frmGridHistoriales = new frmGridHistoriales();
+                frmGridHistoriales.Paciente = Convert.ToInt32(dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
+                frmGridHistoriales.ShowDialog();
+            }
+        }
         private void CargarGrid()
         {
             try

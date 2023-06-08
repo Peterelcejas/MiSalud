@@ -15,7 +15,7 @@ namespace MiSalud
         public frmGestionarPacientes()
         {
             InitializeComponent();
-            this.Icon = Properties.Resources.H_T_Misalud_logo;
+            this.Icon = Properties.Resources.paciente_32;
             btnVer.Image = Properties.Resources.ojo_32;
             dtpNacimiento.Value = dtpNacimiento.MaxDate = DateTime.Now;
         }
@@ -160,7 +160,7 @@ namespace MiSalud
                     if (!chkCertificados.Checked && tabla.Rows.Count > 0)
                     {
                         DialogResult result = MessageBox.Show("Se van a borrar los certificados del Paciente. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if(result == DialogResult.Yes)
+                        if (result == DialogResult.Yes)
                         {
                             VarGlobal.EjecutaSentencia("DELETE FROM CERTIFICADOS WHERE ID_PACIENTE = " + this.Paciente);
                         }
@@ -176,7 +176,7 @@ namespace MiSalud
                 }
                 else
                 {
-                    VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text.Trim() + "', '" + txtContrasegna.Text.Trim() + "', 1)");
+                    VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text.Replace(" ", "") + "', '" + txtContrasegna.Text.Replace(" ", "") + "', 1)");
                     VarGlobal.EjecutaSentencia("INSERT INTO PACIENTES (nombre, apellidos, fecha_nacimiento, direccion, ciudad, telefono, email, certificado_vacunacion, id_usuario) " +
                                                   "VALUES ('" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + dtpNacimiento.Text.Substring(0, 10) + "', '" + txtDireccion.Text + "', '" + txtCiudad.Text + "', " +
                                                   txtTelefono.Text + ", '" + txtEmail.Text + "', " + chkCertificados.Checked + ", (SELECT MAX(id) FROM Usuarios))");

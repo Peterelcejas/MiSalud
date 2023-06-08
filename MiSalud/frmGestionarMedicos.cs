@@ -21,7 +21,7 @@ namespace MiSalud
         public frmGestionarMedicos()
         {
             InitializeComponent();
-            this.Icon = Properties.Resources.H_T_Misalud_logo;
+            this.Icon = Properties.Resources.medico_32;
             btnVer.Image = Properties.Resources.ojo_32;
 
         }
@@ -160,7 +160,7 @@ namespace MiSalud
                 }
                 else
                 {
-                    VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text.Trim() + "', '" + txtContrasegna.Text.Trim() + "', 1)");
+                    VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text.Replace(" ", "") + "', '" + txtContrasegna.Text.Replace(" ", "") + "', 1)");
                     VarGlobal.EjecutaSentencia("INSERT INTO MEDICOS (nombre, apellidos, especialidad, centro, ciudad, telefono, email, id_usuario) " +
                                                   "VALUES ('" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + txtEspecialidad.Text + "', '" + txtCentro.Text + "', '" + txtCiudad.Text + "', " +
                                                   txtTelefono.Text + ", '" + txtEmail.Text + "', (SELECT MAX(id) FROM Usuarios))");

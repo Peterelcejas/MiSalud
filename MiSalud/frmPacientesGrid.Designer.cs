@@ -36,6 +36,7 @@
             dgvPacientes = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             ID_USUARIO = new DataGridViewTextBoxColumn();
+            btnHistorial = new DataGridViewButtonColumn();
             NOMBRE = new DataGridViewTextBoxColumn();
             APELLIDOS = new DataGridViewTextBoxColumn();
             FECHA_NACIMIENTO = new DataGridViewTextBoxColumn();
@@ -123,7 +124,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvPacientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPacientes.Columns.AddRange(new DataGridViewColumn[] { ID, ID_USUARIO, NOMBRE, APELLIDOS, FECHA_NACIMIENTO, DIRECCION, CIUDAD, TELEFONO, EMAIL, CERTIFICADO_VACUNACION });
+            dgvPacientes.Columns.AddRange(new DataGridViewColumn[] { ID, ID_USUARIO, btnHistorial, NOMBRE, APELLIDOS, FECHA_NACIMIENTO, DIRECCION, CIUDAD, TELEFONO, EMAIL, CERTIFICADO_VACUNACION });
             dgvPacientes.EnableHeadersVisualStyles = false;
             dgvPacientes.Location = new Point(12, 42);
             dgvPacientes.Name = "dgvPacientes";
@@ -131,6 +132,7 @@
             dgvPacientes.RowTemplate.Height = 25;
             dgvPacientes.Size = new Size(768, 345);
             dgvPacientes.TabIndex = 19;
+            dgvPacientes.CellClick += dgvPacientes_CellClick;
             // 
             // ID
             // 
@@ -147,6 +149,13 @@
             ID_USUARIO.Name = "ID_USUARIO";
             ID_USUARIO.ReadOnly = true;
             ID_USUARIO.Visible = false;
+            // 
+            // btnHistorial
+            // 
+            btnHistorial.HeaderText = "";
+            btnHistorial.Name = "btnHistorial";
+            btnHistorial.ReadOnly = true;
+            btnHistorial.Text = "";
             // 
             // NOMBRE
             // 
@@ -240,6 +249,7 @@
         private DataGridView dgvPacientes;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn ID_USUARIO;
+        private DataGridViewButtonColumn btnHistorial;
         private DataGridViewTextBoxColumn NOMBRE;
         private DataGridViewTextBoxColumn APELLIDOS;
         private DataGridViewTextBoxColumn FECHA_NACIMIENTO;

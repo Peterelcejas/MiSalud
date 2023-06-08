@@ -15,7 +15,7 @@ namespace MiSalud
         public frmMedicosGrid()
         {
             InitializeComponent();
-            this.Icon = Properties.Resources.H_T_Misalud_logo;
+            this.Icon = Properties.Resources.medico_32;
         }
 
         private void frmMedicosGrid_Load(object sender, EventArgs e)
@@ -38,8 +38,8 @@ namespace MiSalud
                 {
                     if (dgvMedicos.SelectedCells.Count > 0)
                     {
-                        int rowIndex = dgvMedicos.SelectedCells[0].RowIndex;
-                        DataTable tablaCitas = VarGlobal.EjecutaConsulta("SELECT * FROM CITAS LEFT JOIN MEDICOS ON CITAS.ID_MEDICO = MEDICOS.ID WHERE MEDICOS.ID = " + dgvMedicos.Rows[rowIndex].Cells["ID"].Value.ToString());
+                        int fila = dgvMedicos.SelectedCells[0].RowIndex;
+                        DataTable tablaCitas = VarGlobal.EjecutaConsulta("SELECT * FROM CITAS LEFT JOIN MEDICOS ON CITAS.ID_MEDICO = MEDICOS.ID WHERE MEDICOS.ID = " + dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
 
                         if (tablaCitas.Rows.Count > 0)
                         {
@@ -47,7 +47,7 @@ namespace MiSalud
                         }
                         else
                         {
-                            VarGlobal.EjecutaSentencia("DELETE FROM MEDICOS WHERE ID = " + dgvMedicos.Rows[rowIndex].Cells["ID"].Value.ToString());
+                            VarGlobal.EjecutaSentencia("DELETE FROM MEDICOS WHERE ID = " + dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
                             CargarGrid();
                         }
                     }
@@ -71,10 +71,10 @@ namespace MiSalud
         {
             if (dgvMedicos.SelectedCells.Count > 0)
             {
-                int rowIndex = dgvMedicos.SelectedCells[0].RowIndex;
+                int fila = dgvMedicos.SelectedCells[0].RowIndex;
                 frmGestionarMedicos frmGestionarMedicos = new frmGestionarMedicos();
                 frmGestionarMedicos.Actualiza = true;
-                frmGestionarMedicos.Medico = Convert.ToInt32(dgvMedicos.Rows[rowIndex].Cells["ID"].Value.ToString());
+                frmGestionarMedicos.Medico = Convert.ToInt32(dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
                 frmGestionarMedicos.ShowDialog();
                 CargarGrid();
             }
