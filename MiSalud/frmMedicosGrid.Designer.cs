@@ -30,10 +30,6 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dgvMedicos = new DataGridView();
-            btnEliminar = new Button();
-            btnAnyadir = new Button();
-            btnModificar = new Button();
-            btnSalir = new Button();
             ID = new DataGridViewTextBoxColumn();
             ID_USUARIO = new DataGridViewTextBoxColumn();
             NOMBRE = new DataGridViewTextBoxColumn();
@@ -43,12 +39,19 @@
             CIUDAD = new DataGridViewTextBoxColumn();
             TELEFONO = new DataGridViewTextBoxColumn();
             EMAIL = new DataGridViewTextBoxColumn();
+            btnEliminar = new Button();
+            btnAnyadir = new Button();
+            btnModificar = new Button();
+            btnSalir = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvMedicos).BeginInit();
             SuspendLayout();
             // 
             // dgvMedicos
             // 
-            dgvMedicos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dgvMedicos.AllowUserToAddRows = false;
+            dgvMedicos.AllowUserToDeleteRows = false;
+            dgvMedicos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvMedicos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMedicos.BackgroundColor = SystemColors.ControlLight;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.PaleTurquoise;
@@ -63,9 +66,75 @@
             dgvMedicos.EnableHeadersVisualStyles = false;
             dgvMedicos.Location = new Point(12, 42);
             dgvMedicos.Name = "dgvMedicos";
+            dgvMedicos.ReadOnly = true;
             dgvMedicos.RowTemplate.Height = 25;
             dgvMedicos.Size = new Size(768, 345);
             dgvMedicos.TabIndex = 0;
+            // 
+            // ID
+            // 
+            ID.DataPropertyName = "ID";
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            // 
+            // ID_USUARIO
+            // 
+            ID_USUARIO.DataPropertyName = "ID_USUARIO";
+            ID_USUARIO.HeaderText = "Id_usuario";
+            ID_USUARIO.Name = "ID_USUARIO";
+            ID_USUARIO.ReadOnly = true;
+            ID_USUARIO.Visible = false;
+            // 
+            // NOMBRE
+            // 
+            NOMBRE.DataPropertyName = "NOMBRE";
+            NOMBRE.HeaderText = "Nombre";
+            NOMBRE.Name = "NOMBRE";
+            NOMBRE.ReadOnly = true;
+            // 
+            // APELLIDOS
+            // 
+            APELLIDOS.DataPropertyName = "APELLIDOS";
+            APELLIDOS.HeaderText = "Apellidos";
+            APELLIDOS.Name = "APELLIDOS";
+            APELLIDOS.ReadOnly = true;
+            // 
+            // ESPECIALIDAD
+            // 
+            ESPECIALIDAD.DataPropertyName = "ESPECIALIDAD";
+            ESPECIALIDAD.HeaderText = "Especialidad";
+            ESPECIALIDAD.Name = "ESPECIALIDAD";
+            ESPECIALIDAD.ReadOnly = true;
+            // 
+            // CENTRO
+            // 
+            CENTRO.DataPropertyName = "CENTRO";
+            CENTRO.HeaderText = "Centro";
+            CENTRO.Name = "CENTRO";
+            CENTRO.ReadOnly = true;
+            // 
+            // CIUDAD
+            // 
+            CIUDAD.DataPropertyName = "CIUDAD";
+            CIUDAD.HeaderText = "Ciudad";
+            CIUDAD.Name = "CIUDAD";
+            CIUDAD.ReadOnly = true;
+            // 
+            // TELEFONO
+            // 
+            TELEFONO.DataPropertyName = "TELEFONO";
+            TELEFONO.HeaderText = "Nº Teléfono";
+            TELEFONO.Name = "TELEFONO";
+            TELEFONO.ReadOnly = true;
+            // 
+            // EMAIL
+            // 
+            EMAIL.DataPropertyName = "EMAIL";
+            EMAIL.HeaderText = "Email";
+            EMAIL.Name = "EMAIL";
+            EMAIL.ReadOnly = true;
             // 
             // btnEliminar
             // 
@@ -126,62 +195,6 @@
             btnSalir.Text = "&Salir";
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
-            // 
-            // ID
-            // 
-            ID.DataPropertyName = "ID";
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.Visible = false;
-            // 
-            // ID_USUARIO
-            // 
-            ID_USUARIO.DataPropertyName = "ID_USUARIO";
-            ID_USUARIO.HeaderText = "Id_usuario";
-            ID_USUARIO.Name = "ID_USUARIO";
-            ID_USUARIO.Visible = false;
-            // 
-            // NOMBRE
-            // 
-            NOMBRE.DataPropertyName = "NOMBRE";
-            NOMBRE.HeaderText = "Nombre";
-            NOMBRE.Name = "NOMBRE";
-            // 
-            // APELLIDOS
-            // 
-            APELLIDOS.DataPropertyName = "APELLIDOS";
-            APELLIDOS.HeaderText = "Apellidos";
-            APELLIDOS.Name = "APELLIDOS";
-            // 
-            // ESPECIALIDAD
-            // 
-            ESPECIALIDAD.DataPropertyName = "ESPECIALIDAD";
-            ESPECIALIDAD.HeaderText = "Especialidad";
-            ESPECIALIDAD.Name = "ESPECIALIDAD";
-            // 
-            // CENTRO
-            // 
-            CENTRO.DataPropertyName = "CENTRO";
-            CENTRO.HeaderText = "Centro";
-            CENTRO.Name = "CENTRO";
-            // 
-            // CIUDAD
-            // 
-            CIUDAD.DataPropertyName = "CIUDAD";
-            CIUDAD.HeaderText = "Ciudad";
-            CIUDAD.Name = "CIUDAD";
-            // 
-            // TELEFONO
-            // 
-            TELEFONO.DataPropertyName = "TELEFONO";
-            TELEFONO.HeaderText = "Nº Teléfono";
-            TELEFONO.Name = "TELEFONO";
-            // 
-            // EMAIL
-            // 
-            EMAIL.DataPropertyName = "EMAIL";
-            EMAIL.HeaderText = "Email";
-            EMAIL.Name = "EMAIL";
             // 
             // frmMedicosGrid
             // 
