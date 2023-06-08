@@ -25,7 +25,7 @@ namespace MiSalud
             btnAceptar.FlatAppearance.BorderSize = 2;
             btnVer.FlatAppearance.BorderColor = btnAceptar.FlatAppearance.BorderColor = Color.DodgerBlue;
             btnVer.FlatAppearance.BorderSize = btnCancelar.FlatAppearance.BorderSize = 0;
-            dtpNacimiento.Value = dtpNacimiento.MaxDate = DateTime.Now.AddYears(-10);
+            dtpNacimiento.Value = dtpNacimiento.MaxDate = DateTime.Now;
 
         }
 
@@ -88,7 +88,7 @@ namespace MiSalud
         {
             try
             {
-                VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text + "', '" + txtContrasegna.Text + "', 2)");
+                VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text.Trim() + "', '" + txtContrasegna.Text.Trim() + "', 2)");
                 VarGlobal.EjecutaSentencia("INSERT INTO Pacientes (nombre, apellidos, fecha_nacimiento, direccion, ciudad, telefono, email, certificado_vacunacion, id_usuario) " +
                                               "VALUES ('" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + dtpNacimiento.Text.Substring(0, 10) + "', '" + txtDireccion.Text + "', '" +
                                               txtCiudad.Text + "', " + txtTelefono.Text + ", '" + txtEmail.Text + "', " + false + ", (SELECT MAX(id) FROM Usuarios))");

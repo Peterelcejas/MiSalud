@@ -23,12 +23,6 @@ namespace MiSalud
             CargarGrid();
         }
 
-        private void CargarGrid()
-        {
-            DataTable tabla = VarGlobal.EjecutaConsulta("SELECT ID, NOMBRE, APELLIDOS, ESPECIALIDAD, CENTRO, CIUDAD, TELEFONO, EMAIL, ID_USUARIO FROM Medicos");
-            dgvMedicos.DataSource = tabla;
-        }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -83,6 +77,18 @@ namespace MiSalud
                 frmGestionarMedicos.Medico = Convert.ToInt32(dgvMedicos.Rows[rowIndex].Cells["ID"].Value.ToString());
                 frmGestionarMedicos.ShowDialog();
                 CargarGrid();
+            }
+        }
+        private void CargarGrid()
+        {
+            try
+            {
+                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT ID, NOMBRE, APELLIDOS, ESPECIALIDAD, CENTRO, CIUDAD, TELEFONO, EMAIL, ID_USUARIO FROM MEDICOS");
+                dgvMedicos.DataSource = tabla;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

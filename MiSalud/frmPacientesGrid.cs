@@ -15,6 +15,82 @@ namespace MiSalud
         public frmPacientesGrid()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.H_T_Misalud_logo;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Se va a eliminar el medico ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (dgvPacientes.SelectedCells.Count > 0)
+                    {
+                        int rowIndex = dgvPacientes.SelectedCells[0].RowIndex;
+                        DataTable tablaCitas = VarGlobal.EjecutaConsulta("SELECT * FROM CITAS LEFT JOIN PACIENTES ON CITAS.ID_PACIENTE = PACIENTES.ID WHERE PACIENTES.ID = " + dgvPacientes.Rows[rowIndex].Cells["ID"].Value.ToString());
+
+                        if (tablaCitas.Rows.Count > 0)
+                        {
+                            MessageBox.Show("No se puede eliminar tiene citas asociadas", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            VarGlobal.EjecutaSentencia("DELETE FROM PACIENTES WHERE ID = " + dgvPacientes.Rows[rowIndex].Cells["ID"].Value.ToString());
+                            CargarGrid();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (dgvPacientes.SelectedCells.Count > 0)
+            {
+                int rowIndex = dgvPacientes.SelectedCells[0].RowIndex;
+                frmGestionarPacientes frmGestionarPacientes = new frmGestionarPacientes();
+                frmGestionarPacientes.Actualiza = true;
+                frmGestionarPacientes.Paciente = Convert.ToInt32(dgvPacientes.Rows[rowIndex].Cells["ID"].Value.ToString());
+                frmGestionarPacientes.ShowDialog();
+                CargarGrid();
+            }
+        }
+
+        private void btnAnyadir_Click(object sender, EventArgs e)
+        {
+            frmGestionarPacientes frmGestionarPacientes = new frmGestionarPacientes();
+            frmGestionarPacientes.Actualiza = false;
+            frmGestionarPacientes.ShowDialog();
+            CargarGrid();
+        }
+
+        private void frmPacientesGrid_Load(object sender, EventArgs e)
+        {
+            CargarGrid();
+        }
+
+        private void CargarGrid()
+        {
+            try
+            {
+                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM PACIENTES");
+                dgvPacientes.DataSource = tabla;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

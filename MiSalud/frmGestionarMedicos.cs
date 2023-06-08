@@ -35,16 +35,16 @@ namespace MiSalud
                 btnVer.FlatAppearance.BorderSize = btnCancelar.FlatAppearance.BorderSize = 0;
                 if (this.Actualiza)
                 {
-                    DataTable tablaCitas = VarGlobal.EjecutaConsulta("SELECT * FROM MEDICOS WHERE MEDICOS.ID = " + this.Medico);
-                    if (tablaCitas.Rows.Count > 0)
+                    DataTable tablaUpdate = VarGlobal.EjecutaConsulta("SELECT * FROM MEDICOS WHERE MEDICOS.ID = " + this.Medico);
+                    if (tablaUpdate.Rows.Count > 0)
                     {
-                        txtEmail.Text = tablaCitas.Rows[0]["EMAIL"].ToString();
-                        txtTelefono.Text = tablaCitas.Rows[0]["TELEFONO"].ToString();
-                        txtCiudad.Text = tablaCitas.Rows[0]["CIUDAD"].ToString();
-                        txtCentro.Text = tablaCitas.Rows[0]["CENTRO"].ToString();
-                        txtEspecialidad.Text = tablaCitas.Rows[0]["ESPECIALIDAD"].ToString();
-                        txtNombre.Text = tablaCitas.Rows[0]["NOMBRE"].ToString();
-                        txtApellidos.Text = tablaCitas.Rows[0]["APELLIDOS"].ToString();
+                        txtEmail.Text = tablaUpdate.Rows[0]["EMAIL"].ToString();
+                        txtTelefono.Text = tablaUpdate.Rows[0]["TELEFONO"].ToString();
+                        txtCiudad.Text = tablaUpdate.Rows[0]["CIUDAD"].ToString();
+                        txtCentro.Text = tablaUpdate.Rows[0]["CENTRO"].ToString();
+                        txtEspecialidad.Text = tablaUpdate.Rows[0]["ESPECIALIDAD"].ToString();
+                        txtNombre.Text = tablaUpdate.Rows[0]["NOMBRE"].ToString();
+                        txtApellidos.Text = tablaUpdate.Rows[0]["APELLIDOS"].ToString();
                     }
 
                     lblNombreUsu.Visible = lblContrasegna.Visible = txtContrasegna.Visible = txtUsuario.Visible = btnVer.Visible = false;
@@ -89,12 +89,12 @@ namespace MiSalud
             if (!(txtUsuario.Text.Length > 0 && txtContrasegna.Text.Length > 0 && txtNombre.Text.Length > 0 && txtApellidos.Text.Length > 0 && txtCiudad.Text.Length > 0 &&
                 txtCentro.Text.Length > 0 && txtTelefono.Text.Length > 0 && txtEmail.Text.Length > 0) && !this.Actualiza)
             {
-                MessageBox.Show("Tienes que rellenar todos los campos para crear la cuenta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tienes que rellenar todos los campos para introducir un medico.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (!(txtNombre.Text.Length > 0 && txtApellidos.Text.Length > 0 && txtCiudad.Text.Length > 0 &&
                 txtCentro.Text.Length > 0 && txtTelefono.Text.Length > 0 && txtEmail.Text.Length > 0))
             {
-                MessageBox.Show("Tienes que rellenar todos los campos para crear la cuenta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tienes que rellenar todos los campos para actualizar el medico.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -121,7 +121,7 @@ namespace MiSalud
                 }
             }
         }
-        
+
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -136,12 +136,12 @@ namespace MiSalud
                 DialogResult result = MessageBox.Show("No se va a actualizar el medico. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 return result == DialogResult.Yes;
             }
-            else 
+            else
             {
                 DialogResult result = MessageBox.Show("Se borrará los datos introducidos. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 return result == DialogResult.Yes;
             }
-            
+
         }
 
         private bool CamposLlenos()
@@ -160,7 +160,7 @@ namespace MiSalud
                 }
                 else
                 {
-                    VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text + "', '" + txtContrasegna.Text + "', 1)");
+                    VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text.Trim() + "', '" + txtContrasegna.Text.Trim() + "', 1)");
                     VarGlobal.EjecutaSentencia("INSERT INTO MEDICOS (nombre, apellidos, especialidad, centro, ciudad, telefono, email, id_usuario) " +
                                                   "VALUES ('" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + txtEspecialidad.Text + "', '" + txtCentro.Text + "', '" + txtCiudad.Text + "', " +
                                                   txtTelefono.Text + ", '" + txtEmail.Text + "', (SELECT MAX(id) FROM Usuarios))");
