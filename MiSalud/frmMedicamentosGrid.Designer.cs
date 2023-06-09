@@ -33,11 +33,11 @@
             btnModificar = new Button();
             btnEliminar = new Button();
             btnAnyadir = new Button();
-            dgvPacientes = new DataGridView();
+            dgvMedicamentos = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             NOMBRE = new DataGridViewTextBoxColumn();
             DESCRIPCION = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dgvPacientes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).BeginInit();
             SuspendLayout();
             // 
             // btnSalir
@@ -47,12 +47,13 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.Black;
-            btnSalir.Location = new Point(664, 385);
+            btnSalir.Location = new Point(664, 386);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(120, 38);
             btnSalir.TabIndex = 28;
             btnSalir.Text = "&Salir";
             btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
             // 
             // btnModificar
             // 
@@ -61,12 +62,13 @@
             btnModificar.FlatStyle = FlatStyle.Flat;
             btnModificar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnModificar.ForeColor = Color.Black;
-            btnModificar.Location = new Point(142, 385);
+            btnModificar.Location = new Point(142, 386);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(120, 38);
             btnModificar.TabIndex = 27;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = false;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnEliminar
             // 
@@ -75,12 +77,13 @@
             btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnEliminar.ForeColor = Color.Black;
-            btnEliminar.Location = new Point(268, 385);
+            btnEliminar.Location = new Point(268, 386);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(120, 38);
             btnEliminar.TabIndex = 26;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnAnyadir
             // 
@@ -89,20 +92,21 @@
             btnAnyadir.FlatStyle = FlatStyle.Flat;
             btnAnyadir.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnAnyadir.ForeColor = Color.Black;
-            btnAnyadir.Location = new Point(16, 385);
+            btnAnyadir.Location = new Point(16, 386);
             btnAnyadir.Name = "btnAnyadir";
             btnAnyadir.Size = new Size(120, 38);
             btnAnyadir.TabIndex = 25;
             btnAnyadir.Text = "Añadir";
             btnAnyadir.UseVisualStyleBackColor = false;
+            btnAnyadir.Click += btnAnyadir_Click;
             // 
-            // dgvPacientes
+            // dgvMedicamentos
             // 
-            dgvPacientes.AllowUserToAddRows = false;
-            dgvPacientes.AllowUserToDeleteRows = false;
-            dgvPacientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvPacientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvPacientes.BackgroundColor = SystemColors.ControlLight;
+            dgvMedicamentos.AllowUserToAddRows = false;
+            dgvMedicamentos.AllowUserToDeleteRows = false;
+            dgvMedicamentos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvMedicamentos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMedicamentos.BackgroundColor = SystemColors.ControlLight;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.PaleTurquoise;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -110,16 +114,16 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.DarkCyan;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvPacientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPacientes.Columns.AddRange(new DataGridViewColumn[] { ID, NOMBRE, DESCRIPCION });
-            dgvPacientes.EnableHeadersVisualStyles = false;
-            dgvPacientes.Location = new Point(16, 27);
-            dgvPacientes.Name = "dgvPacientes";
-            dgvPacientes.ReadOnly = true;
-            dgvPacientes.RowTemplate.Height = 25;
-            dgvPacientes.Size = new Size(768, 345);
-            dgvPacientes.TabIndex = 24;
+            dgvMedicamentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvMedicamentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMedicamentos.Columns.AddRange(new DataGridViewColumn[] { ID, NOMBRE, DESCRIPCION });
+            dgvMedicamentos.EnableHeadersVisualStyles = false;
+            dgvMedicamentos.Location = new Point(16, 27);
+            dgvMedicamentos.Name = "dgvMedicamentos";
+            dgvMedicamentos.ReadOnly = true;
+            dgvMedicamentos.RowTemplate.Height = 25;
+            dgvMedicamentos.Size = new Size(768, 346);
+            dgvMedicamentos.TabIndex = 24;
             // 
             // ID
             // 
@@ -130,12 +134,14 @@
             // 
             // NOMBRE
             // 
+            NOMBRE.DataPropertyName = "NOMBRE";
             NOMBRE.HeaderText = "Medicamento";
             NOMBRE.Name = "NOMBRE";
             NOMBRE.ReadOnly = true;
             // 
             // DESCRIPCION
             // 
+            DESCRIPCION.DataPropertyName = "DESCRIPCION";
             DESCRIPCION.HeaderText = "Descripcion";
             DESCRIPCION.Name = "DESCRIPCION";
             DESCRIPCION.ReadOnly = true;
@@ -145,15 +151,16 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Honeydew;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 451);
             Controls.Add(btnSalir);
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
             Controls.Add(btnAnyadir);
-            Controls.Add(dgvPacientes);
+            Controls.Add(dgvMedicamentos);
             Name = "frmMedicamentosGrid";
             Text = "Medicamentos";
-            ((System.ComponentModel.ISupportInitialize)dgvPacientes).EndInit();
+            Load += frmMedicamentosGrid_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).EndInit();
             ResumeLayout(false);
         }
 
@@ -163,7 +170,7 @@
         private Button btnModificar;
         private Button btnEliminar;
         private Button btnAnyadir;
-        private DataGridView dgvPacientes;
+        private DataGridView dgvMedicamentos;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn NOMBRE;
         private DataGridViewTextBoxColumn DESCRIPCION;

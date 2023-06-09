@@ -27,7 +27,7 @@ namespace MiSalud
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (!(cboMedicamento.Text.Length > 0 && dtpFechaIni.Text.Length > 0 && dtpFechaFin.Text.Length > 0) && !this.Actualiza)
+            if (!(cboMedicamento.SelectedIndex != 0 && dtpFechaIni.Text.Length > 0 && dtpFechaFin.Text.Length > 0) && !this.Actualiza)
             {
                 MessageBox.Show("Tienes que rellenar todos los campos para introducir el paciente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -84,6 +84,9 @@ namespace MiSalud
                 else
                 {
                     tabla = VarGlobal.EjecutaConsulta("SELECT * FROM MEDICAMENTOS");
+                    DataRow filaVacia = tabla.NewRow();
+                    tabla.Rows.InsertAt(filaVacia, 0);
+
                     cboMedicamento.DataSource = tabla;
                     cboMedicamento.DisplayMember = "Nombre";
                     cboMedicamento.ValueMember = "ID";
@@ -122,12 +125,12 @@ namespace MiSalud
             {
                 if (this.Actualiza)
                 {
-                    VarGlobal.EjecutaSentencia("UPDATE MEDICAMENTOS_HISTORIAL SET fecha_fin = '" + dtpFechaFin.Text.Substring(0, 10) + " WHERE id = " + this.Historial);
+                    VarGlobal.EjecutaSentencia("UPDATE HISTORIAL_MEDICAMENTOS SET fecha_fin = '" + dtpFechaFin.Text.Substring(0, 10) + "' WHERE id = " + this.Historial);
                 }
                 else
                 {
-                    VarGlobal.EjecutaSentencia("INSERT INTO MEDICAMENTOS_HISTORIAL (id_paciente, id_medicamento, fecha_inicio, fecha_fin) " +
-                                                  "VALUES (" + this.Paciente + ", '" + cboMedicamento.Text + "', '" + dtpFechaIni.Text.Substring(0, 10) + "', '" + dtpFechaFin.Text.Substring(0, 10));
+                    VarGlobal.EjecutaSentencia("INSERT INTO HISTORIAL_MEDICAMENTOS (id_paciente, id_medicamento, fecha_inicio, fecha_fin) " +
+                                                  "VALUES (" + this.Paciente + ", '" + cboMedicamento.SelectedIndex + "', '" + dtpFechaIni.Text.Substring(0, 10) + "', '" + dtpFechaFin.Text.Substring(0, 10) + "')");
                 }
                 return true;
             }

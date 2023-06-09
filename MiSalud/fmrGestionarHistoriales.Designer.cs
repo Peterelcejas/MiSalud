@@ -122,6 +122,7 @@
             // 
             // cboMedicamento
             // 
+            cboMedicamento.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMedicamento.FormattingEnabled = true;
             cboMedicamento.Location = new Point(272, 30);
             cboMedicamento.Name = "cboMedicamento";
