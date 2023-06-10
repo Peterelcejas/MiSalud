@@ -32,6 +32,7 @@
             dgvMedicos = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             ID_USUARIO = new DataGridViewTextBoxColumn();
+            btnCitas = new DataGridViewButtonColumn();
             NOMBRE = new DataGridViewTextBoxColumn();
             APELLIDOS = new DataGridViewTextBoxColumn();
             ESPECIALIDAD = new DataGridViewTextBoxColumn();
@@ -62,7 +63,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvMedicos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMedicos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMedicos.Columns.AddRange(new DataGridViewColumn[] { ID, ID_USUARIO, NOMBRE, APELLIDOS, ESPECIALIDAD, CENTRO, CIUDAD, TELEFONO, EMAIL });
+            dgvMedicos.Columns.AddRange(new DataGridViewColumn[] { ID, ID_USUARIO, btnCitas, NOMBRE, APELLIDOS, ESPECIALIDAD, CENTRO, CIUDAD, TELEFONO, EMAIL });
             dgvMedicos.EnableHeadersVisualStyles = false;
             dgvMedicos.Location = new Point(12, 42);
             dgvMedicos.Name = "dgvMedicos";
@@ -70,6 +71,7 @@
             dgvMedicos.RowTemplate.Height = 25;
             dgvMedicos.Size = new Size(768, 345);
             dgvMedicos.TabIndex = 0;
+            dgvMedicos.CellClick += dgvMedicos_CellClick;
             // 
             // ID
             // 
@@ -86,6 +88,12 @@
             ID_USUARIO.Name = "ID_USUARIO";
             ID_USUARIO.ReadOnly = true;
             ID_USUARIO.Visible = false;
+            // 
+            // btnCitas
+            // 
+            btnCitas.HeaderText = "";
+            btnCitas.Name = "btnCitas";
+            btnCitas.ReadOnly = true;
             // 
             // NOMBRE
             // 
@@ -223,6 +231,7 @@
         private Button btnSalir;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn ID_USUARIO;
+        private DataGridViewButtonColumn btnCitas;
         private DataGridViewTextBoxColumn NOMBRE;
         private DataGridViewTextBoxColumn APELLIDOS;
         private DataGridViewTextBoxColumn ESPECIALIDAD;

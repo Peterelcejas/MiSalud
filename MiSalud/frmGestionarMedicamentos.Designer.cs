@@ -120,7 +120,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             Name = "frmGestionarMedicamentos";
-            Text = "frmGestionarMedicamentos";
+            Text = "Medicamento";
             FormClosing += frmGestionarMedicamentos_FormClosing;
             Load += frmGestionarMedicamentos_Load;
             ResumeLayout(false);

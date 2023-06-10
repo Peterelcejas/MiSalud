@@ -27,7 +27,7 @@ namespace MiSalud
         {
             try
             {
-                DialogResult result = MessageBox.Show("Se va a eliminar el medico ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Se va a eliminar el paciente ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -78,12 +78,6 @@ namespace MiSalud
         private void frmPacientesGrid_Load(object sender, EventArgs e)
         {
             CargarGrid();
-            foreach (DataGridViewRow fila in dgvPacientes.Rows)
-            {
-                DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)fila.Cells["btnHistorial"];
-
-                buttonCell.Value = "Ver Historial";
-            }
         }
 
         private void dgvPacientes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -102,6 +96,13 @@ namespace MiSalud
             {
                 DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM PACIENTES");
                 dgvPacientes.DataSource = tabla;
+                
+                foreach (DataGridViewRow fila in dgvPacientes.Rows)
+                {
+                    DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)fila.Cells["btnHistorial"];
+
+                    buttonCell.Value = "Historial";
+                }
             }
             catch (Exception ex)
             {

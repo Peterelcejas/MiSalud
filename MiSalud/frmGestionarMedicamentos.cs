@@ -46,7 +46,7 @@ namespace MiSalud
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();   
+            this.Close();
         }
 
         private void frmGestionarMedicamentos_Load(object sender, EventArgs e)

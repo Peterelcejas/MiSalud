@@ -63,6 +63,16 @@ namespace MiSalud.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
         /// </summary>
+        internal static System.Drawing.Icon citas_32 {
+            get {
+                object obj = ResourceManager.GetObject("citas_32", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
         internal static System.Drawing.Icon H_T_Misalud_logo {
             get {
                 object obj = ResourceManager.GetObject("H_T_Misalud_logo", resourceCulture);

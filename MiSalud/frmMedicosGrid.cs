@@ -79,12 +79,30 @@ namespace MiSalud
                 CargarGrid();
             }
         }
+
+        private void dgvMedicos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvMedicos.Columns["btnCitas"].Index && e.RowIndex >= 0)
+            {
+                int fila = dgvMedicos.SelectedCells[0].RowIndex;
+                frmCitasGrid frmCitasGrid = new frmCitasGrid();
+                frmCitasGrid.Medico = Convert.ToInt32(dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
+                frmCitasGrid.ShowDialog();
+            }
+        }
         private void CargarGrid()
         {
             try
             {
-                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT ID, NOMBRE, APELLIDOS, ESPECIALIDAD, CENTRO, CIUDAD, TELEFONO, EMAIL, ID_USUARIO FROM MEDICOS");
+                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM MEDICOS");
                 dgvMedicos.DataSource = tabla;
+
+                foreach (DataGridViewRow fila in dgvMedicos.Rows)
+                {
+                    DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)fila.Cells["btnCitas"];
+
+                    buttonCell.Value = "Citas";
+                }
             }
             catch (Exception ex)
             {
