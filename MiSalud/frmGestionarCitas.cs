@@ -21,6 +21,7 @@ namespace MiSalud
 
         public int Cita { get; internal set; }
         public int Medico { get; internal set; }
+        public int Usuario { get; internal set; }
 
         private bool _estaGuardando = false;
 

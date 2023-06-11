@@ -35,6 +35,9 @@ namespace MiSalud
                         this.Hide();
                         break;
                     case 1:
+                        frmMainMedico frmMainMedico = new frmMainMedico();
+                        frmMainMedico.Usuario = Convert.ToInt32(tabla.Rows[0]["id"]);
+                        frmMainMedico.Show();
                         this.Hide();
                         break;
                     case 2:

@@ -13,6 +13,7 @@ namespace MiSalud
     public partial class frmCitasGrid : Form
     {
         public int Medico { get; internal set; }
+        public int Usuario { get; internal set; }
 
         public frmCitasGrid()
         {
@@ -55,6 +56,7 @@ namespace MiSalud
                 frmGestionarCitas frmGestionarCitas = new frmGestionarCitas();
                 frmGestionarCitas.Cita = Convert.ToInt32(dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
                 frmGestionarCitas.Medico = Convert.ToInt32(dgvMedicos.Rows[fila].Cells["IDM"].Value.ToString());
+                frmGestionarCitas.Usuario = this.Usuario;
                 frmGestionarCitas.ShowDialog();
                 CargarGrid();
             }
