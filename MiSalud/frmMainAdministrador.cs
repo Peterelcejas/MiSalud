@@ -16,9 +16,9 @@ namespace MiSalud
         {
             InitializeComponent();
             this.Icon = Properties.Resources.H_T_Misalud_logo;
-            btnMedicos.BackgroundImage = Properties.Resources.medicamentos_72;
-            btnPacientes.BackgroundImage = Properties.Resources.paciente_72;
-            btnMedicamentos.BackgroundImage = Properties.Resources.medicamentos_72;
+            btnMedicos.Image = Properties.Resources.medicamentos_128;
+            btnPacientes.Image = Properties.Resources.paciente_128;
+            btnMedicamentos.Image = Properties.Resources.medicamentos_128;
         }
 
         private void btnMedicos_Click(object sender, EventArgs e)
