@@ -127,11 +127,17 @@
   <data name="H_T_Misalud_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\H.T.Misalud_logo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="medicamentos_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medicamentos_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="medicamentos_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\medicamentos_32.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="medicamentos_72" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\medicamentos_72.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medico_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medico_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="medico_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\medico_32.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -141,6 +147,9 @@
   </data>
   <data name="ojo_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ojo_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="paciente_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\paciente_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="paciente_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\paciente_32.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

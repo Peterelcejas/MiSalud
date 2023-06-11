@@ -34,16 +34,11 @@
             tsmMedicos = new ToolStripMenuItem();
             tsmPacientes = new ToolStripMenuItem();
             tsmMedicamentos = new ToolStripMenuItem();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            btnMedicos = new Button();
-            btnPacientes = new Button();
-            btnMedicamentos = new Button();
             toolStrip1 = new ToolStrip();
-            toolStripButton1 = new ToolStripButton();
-            toolStripButton2 = new ToolStripButton();
-            toolStripButton3 = new ToolStripButton();
+            btnMedicos = new ToolStripButton();
+            btnPacientes = new ToolStripButton();
+            btnMedicamentos = new ToolStripButton();
             mnsMenu.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -85,81 +80,54 @@
             tsmMedicamentos.Text = "Gestión de Medicamentos";
             tsmMedicamentos.Click += gestiónDeMedicamentosToolStripMenuItem_Click;
             // 
-            // flowLayoutPanel1
+            // toolStrip1
             // 
-            flowLayoutPanel1.Controls.Add(btnMedicos);
-            flowLayoutPanel1.Controls.Add(btnPacientes);
-            flowLayoutPanel1.Controls.Add(btnMedicamentos);
-            flowLayoutPanel1.Location = new Point(285, 81);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(415, 393);
-            flowLayoutPanel1.TabIndex = 1;
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnMedicos, btnPacientes, btnMedicamentos });
+            toolStrip1.Location = new Point(0, 24);
+            toolStrip1.MinimumSize = new Size(800, 50);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(800, 50);
+            toolStrip1.TabIndex = 2;
+            toolStrip1.Text = "toolStrip1";
             // 
             // btnMedicos
             // 
-            btnMedicos.BackColor = SystemColors.ControlLight;
-            btnMedicos.Location = new Point(3, 3);
+            btnMedicos.AutoSize = false;
+            btnMedicos.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnMedicos.Image = (Image)resources.GetObject("btnMedicos.Image");
+            btnMedicos.ImageTransparentColor = Color.Magenta;
+            btnMedicos.Margin = new Padding(8, 0, 8, 0);
             btnMedicos.Name = "btnMedicos";
-            btnMedicos.Size = new Size(200, 200);
-            btnMedicos.TabIndex = 2;
-            btnMedicos.UseVisualStyleBackColor = false;
+            btnMedicos.Size = new Size(50, 50);
+            btnMedicos.Text = "Medicos";
+            btnMedicos.ToolTipText = "Medicos";
             btnMedicos.Click += btnMedicos_Click;
             // 
             // btnPacientes
             // 
-            btnPacientes.BackColor = SystemColors.ControlLight;
-            btnPacientes.Location = new Point(209, 3);
+            btnPacientes.AutoSize = false;
+            btnPacientes.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnPacientes.Image = (Image)resources.GetObject("btnPacientes.Image");
+            btnPacientes.ImageTransparentColor = Color.Magenta;
+            btnPacientes.Margin = new Padding(8, 0, 8, 0);
             btnPacientes.Name = "btnPacientes";
-            btnPacientes.Size = new Size(200, 200);
-            btnPacientes.TabIndex = 3;
-            btnPacientes.UseVisualStyleBackColor = false;
+            btnPacientes.Size = new Size(50, 50);
+            btnPacientes.Text = "Pacientes";
+            btnPacientes.ToolTipText = "Pacientes";
             btnPacientes.Click += btnPacientes_Click;
             // 
             // btnMedicamentos
             // 
-            btnMedicamentos.BackColor = SystemColors.ControlLight;
-            btnMedicamentos.Location = new Point(3, 209);
+            btnMedicamentos.AutoSize = false;
+            btnMedicamentos.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnMedicamentos.Image = (Image)resources.GetObject("btnMedicamentos.Image");
+            btnMedicamentos.ImageTransparentColor = Color.Magenta;
+            btnMedicamentos.Margin = new Padding(8, 0, 8, 0);
             btnMedicamentos.Name = "btnMedicamentos";
-            btnMedicamentos.Size = new Size(200, 200);
-            btnMedicamentos.TabIndex = 4;
-            btnMedicamentos.UseVisualStyleBackColor = false;
+            btnMedicamentos.Size = new Size(50, 50);
+            btnMedicamentos.Text = "Medicamentos";
+            btnMedicamentos.ToolTipText = "Medicamentos";
             btnMedicamentos.Click += btnMedicamentos_Click;
-            // 
-            // toolStrip1
-            // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripButton3 });
-            toolStrip1.Location = new Point(0, 24);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(800, 25);
-            toolStrip1.TabIndex = 2;
-            toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(23, 22);
-            toolStripButton1.Text = "toolStripButton1";
-            // 
-            // toolStripButton2
-            // 
-            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(23, 22);
-            toolStripButton2.Text = "toolStripButton2";
-            // 
-            // toolStripButton3
-            // 
-            toolStripButton3.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton3.Image = (Image)resources.GetObject("toolStripButton3.Image");
-            toolStripButton3.ImageTransparentColor = Color.Magenta;
-            toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(23, 22);
-            toolStripButton3.Text = "toolStripButton3";
             // 
             // frmMainAdministrador
             // 
@@ -168,14 +136,12 @@
             BackColor = Color.Honeydew;
             ClientSize = new Size(800, 450);
             Controls.Add(toolStrip1);
-            Controls.Add(flowLayoutPanel1);
             Controls.Add(mnsMenu);
             MainMenuStrip = mnsMenu;
             Name = "frmMainAdministrador";
             Text = "H.T.MiSalud";
             mnsMenu.ResumeLayout(false);
             mnsMenu.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             ResumeLayout(false);
@@ -189,13 +155,9 @@
         private ToolStripMenuItem tsmMedicos;
         private ToolStripMenuItem tsmPacientes;
         private ToolStripMenuItem tsmMedicamentos;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Button btnMedicos;
-        private Button btnPacientes;
-        private Button btnMedicamentos;
         private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButton1;
-        private ToolStripButton toolStripButton2;
-        private ToolStripButton toolStripButton3;
+        private ToolStripButton btnMedicos;
+        private ToolStripButton btnPacientes;
+        private ToolStripButton btnMedicamentos;
     }
 }
