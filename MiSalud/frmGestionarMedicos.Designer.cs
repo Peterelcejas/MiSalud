@@ -303,6 +303,7 @@
             Controls.Add(lblNombreUsu);
             Controls.Add(btnAceptar);
             Name = "frmGestionarMedicos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Medico";
             FormClosing += frmGestionarMedicos_FormClosing;
             Load += frmGestionarMedicos_Load;

@@ -216,6 +216,7 @@
             Controls.Add(btnAnyadir);
             Controls.Add(dgvMedicos);
             Name = "frmMedicosGrid";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Medicos";
             Load += frmMedicosGrid_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMedicos).EndInit();

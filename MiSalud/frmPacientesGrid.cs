@@ -96,7 +96,7 @@ namespace MiSalud
             {
                 DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM PACIENTES");
                 dgvPacientes.DataSource = tabla;
-                
+
                 foreach (DataGridViewRow fila in dgvPacientes.Rows)
                 {
                     DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)fila.Cells["btnHistorial"];

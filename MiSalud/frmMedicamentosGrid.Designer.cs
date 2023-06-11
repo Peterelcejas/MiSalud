@@ -158,6 +158,7 @@
             Controls.Add(btnAnyadir);
             Controls.Add(dgvMedicamentos);
             Name = "frmMedicamentosGrid";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Medicamentos";
             Load += frmMedicamentosGrid_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMedicamentos).EndInit();

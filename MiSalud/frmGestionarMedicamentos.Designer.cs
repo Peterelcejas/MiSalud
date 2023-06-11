@@ -120,6 +120,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             Name = "frmGestionarMedicamentos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Medicamento";
             FormClosing += frmGestionarMedicamentos_FormClosing;
             Load += frmGestionarMedicamentos_Load;

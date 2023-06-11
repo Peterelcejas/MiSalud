@@ -304,6 +304,7 @@
             Controls.Add(lblNombreUsu);
             Controls.Add(btnAceptar);
             Name = "frmRegistrar";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Nuevo Usuario";
             FormClosing += frmRegistrar_FormClosing;
             Load += frmRegistrar_Load;

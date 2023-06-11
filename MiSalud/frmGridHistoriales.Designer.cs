@@ -184,6 +184,7 @@
             Controls.Add(btnAnyadir);
             Controls.Add(dgvHistorial);
             Name = "frmGridHistoriales";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmGridHistoriales";
             Load += frmGridHistoriales_Load;
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).EndInit();

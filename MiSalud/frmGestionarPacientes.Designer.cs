@@ -318,6 +318,7 @@
             Controls.Add(lblNombreUsu);
             Controls.Add(btnAceptar);
             Name = "frmGestionarPacientes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmGestionarPacientes";
             FormClosing += frmGestionarPacientes_FormClosing;
             Load += frmGestionarPacientes_Load;

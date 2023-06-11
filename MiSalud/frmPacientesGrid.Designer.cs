@@ -234,6 +234,7 @@
             Controls.Add(btnAnyadir);
             Controls.Add(dgvPacientes);
             Name = "frmPacientesGrid";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pacientes";
             Load += frmPacientesGrid_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).EndInit();

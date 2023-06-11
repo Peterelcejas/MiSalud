@@ -144,6 +144,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             Name = "fmrGestionarHistoriales";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fmrGestionarHistoriales";
             FormClosing += fmrGestionarHistoriales_FormClosing;
             Load += fmrGestionarHistoriales_Load;

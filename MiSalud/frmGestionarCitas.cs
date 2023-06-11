@@ -27,14 +27,81 @@ namespace MiSalud
         private void frmGestionarCitas_Load(object sender, EventArgs e)
         {
             mtcFecha.MinDate = DateTime.Now;
+            btnAceptar.FlatAppearance.BorderSize = 2;
+            btnAceptar.FlatAppearance.BorderColor = Color.DodgerBlue;
             CargaMedicos();
+        }
+
+        private void cboMedico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboMedico.Text.Length > 0)
+            {
+                mtcFecha.Enabled = true; CargaFechas();
+            }
+            else
+            {
+                mtcFecha.Enabled = false;
+            }
+        }
+
+        private void mtcFecha_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            if (mtcFecha.SelectionStart.ToString().Length > 0)
+            {
+                cboHora.Enabled = true;
+                CargaHoras();
+            }
+            else
+            {
+                cboHora.Enabled = false;
+            }
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (!(cboMedico.SelectedIndex != 0 && cboHora.SelectedIndex != 0))
+            {
+                MessageBox.Show("Tienes que rellenar todos los campos para actualizar el paciente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (GuadarDatos())
+                {
+                    _estaGuardando = true;
+                    this.Close();
+                }
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmGestionarCitas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!_estaGuardando)
+            {
+                if (CamposLlenos() && !ConfirmarBorradoDatos())
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void cboHora_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboHora.SelectedIndex != 0)
+            {
+                txtFechaCita.Text = mtcFecha.SelectionStart.ToString().Substring(0, 10) + " " + cboHora.Text + "H";
+            }
         }
 
         private void CargaMedicos()
         {
             try
             {
-                DataTable medicos = VarGlobal.EjecutaConsulta("SELECT M.ID, M.NOMBRE FROM CITAS AS C LEFT JOIN MEDICOS AS M ON C.ID_MEDICO = M.ID WHERE M.ID != " + this.Medico );
+                DataTable medicos = VarGlobal.EjecutaConsulta("SELECT ID, NOMBRE FROM MEDICOS WHERE ID != " + this.Medico);
                 DataRow filaVacia = medicos.NewRow();
                 medicos.Rows.InsertAt(filaVacia, 0);
 
@@ -71,7 +138,7 @@ namespace MiSalud
         {
             try
             {
-                DataTable horas = VarGlobal.EjecutaConsulta("WITH horas AS (SELECT generate_series(8, 20) AS hora) SELECT hora FROM horas WHERE hora NOT IN (SELECT HORA FROM citas WHERE ID_MEDICO = " + this.Medico + " AND FECHA = '" + mtcFecha.SelectionStart.ToString() + "');");
+                DataTable horas = VarGlobal.EjecutaConsulta("WITH horas AS (SELECT generate_series(8, 20) AS hora) SELECT hora FROM horas WHERE hora NOT IN (SELECT HORA FROM citas WHERE ID_MEDICO = (SELECT ID FROM MEDICOS WHERE NOMBRE = '" + cboMedico.Text + "') AND FECHA = '" + mtcFecha.SelectionStart.ToString() + "');");
                 DataRow filaVacia = horas.NewRow();
                 horas.Rows.InsertAt(filaVacia, 0);
 
@@ -85,29 +152,29 @@ namespace MiSalud
             }
         }
 
-        private void cboMedico_SelectedIndexChanged(object sender, EventArgs e)
+        private bool GuadarDatos()
         {
-            if (cboMedico.Text.Length > 0)
+            try
             {
-                mtcFecha.Enabled = true; CargaFechas();
+                VarGlobal.EjecutaSentencia("UPDATE CITAS SET id_medico = (SELECT ID FROM MEDICOS WHERE NOMBRE = '" + cboMedico.Text + "'), fecha = '" + mtcFecha.SelectionStart.ToString() +
+                    "', hora = " + Convert.ToInt32(cboHora.Text) + " WHERE id = " + this.Cita);
+                return true;
             }
-            else
+            catch (Exception ex)
             {
-                mtcFecha.Enabled = false;
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
-
-        private void mtcFecha_DateChanged(object sender, DateRangeEventArgs e)
+        private bool ConfirmarBorradoDatos()
         {
-            if (mtcFecha.SelectionStart.ToString().Length > 0)
-            {
-                cboHora.Enabled = true; 
-                CargaHoras();
-            }
-            else
-            {
-                cboHora.Enabled = false;
-            }
+            DialogResult result = MessageBox.Show("Se borrará los datos introducidos. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return result == DialogResult.Yes;
+        }
+
+        private bool CamposLlenos()
+        {
+            return (cboHora.Text.Length > 0 || cboMedico.Text.Length > 0 || mtcFecha.SelectionStart.ToString().Length > 0);
         }
     }
 }

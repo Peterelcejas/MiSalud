@@ -112,6 +112,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximumSize = new Size(610, 377);
             Name = "frmInicio";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "H.T.MiSalud";
             Load += Form1_Load;
             ResumeLayout(false);

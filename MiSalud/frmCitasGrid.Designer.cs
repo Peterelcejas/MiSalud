@@ -167,6 +167,7 @@
             Controls.Add(btnEliminar);
             Controls.Add(dgvMedicos);
             Name = "frmCitasGrid";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Citas";
             Load += CitasGrid_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMedicos).EndInit();
