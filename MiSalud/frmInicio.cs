@@ -38,6 +38,7 @@ namespace MiSalud
                     case 1:
                         frmMainMedico frmMainMedico = new frmMainMedico();
                         frmMainMedico.Usuario = Convert.ToInt32(tabla.Rows[0]["TIPO"]);
+                        frmMainMedico.IdUsuario = Convert.ToInt32(tabla.Rows[0]["ID"]);
                         frmMainMedico.Show();
                         this.Hide();
                         break;

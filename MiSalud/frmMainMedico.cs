@@ -13,6 +13,7 @@ namespace MiSalud
     public partial class frmMainMedico : Form
     {
         public int Usuario { get; internal set; }
+        public int IdUsuario { get; internal set; }
 
         public frmMainMedico()
         {
@@ -55,7 +56,7 @@ namespace MiSalud
                 frmCitasGrid frmCitasGrid = new frmCitasGrid();
                 frmCitasGrid.Usuario = this.Usuario;
 
-                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT M.ID FROM USUARIOS AS S LEFT JOIN MEDICOS AS M ON S.ID = M.ID_USUARIO WHERE S.ID = " + this.Usuario);
+                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT M.ID FROM USUARIOS AS S LEFT JOIN MEDICOS AS M ON S.ID = M.ID_USUARIO WHERE S.ID = " + this.IdUsuario);
                 frmCitasGrid.Medico = Convert.ToInt32(tabla.Rows[0]["ID"].ToString());
                 frmCitasGrid.ShowDialog();
             }

@@ -49,7 +49,6 @@
             lblNombreUsu = new Label();
             btnAceptar = new Button();
             dtpNacimiento = new DateTimePicker();
-            chkCertificados = new CheckBox();
             SuspendLayout();
             // 
             // lblFechaNac
@@ -277,25 +276,12 @@
             dtpNacimiento.TabIndex = 77;
             dtpNacimiento.Value = new DateTime(2023, 6, 5, 17, 6, 44, 0);
             // 
-            // chkCertificados
-            // 
-            chkCertificados.AutoSize = true;
-            chkCertificados.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            chkCertificados.Location = new Point(254, 375);
-            chkCertificados.MinimumSize = new Size(427, 30);
-            chkCertificados.Name = "chkCertificados";
-            chkCertificados.Size = new Size(427, 34);
-            chkCertificados.TabIndex = 78;
-            chkCertificados.Text = "Certificados";
-            chkCertificados.UseVisualStyleBackColor = true;
-            // 
             // frmGestionarPacientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Honeydew;
             ClientSize = new Size(867, 484);
-            Controls.Add(chkCertificados);
             Controls.Add(dtpNacimiento);
             Controls.Add(lblFechaNac);
             Controls.Add(btnVer);
@@ -348,6 +334,5 @@
         private Label lblNombreUsu;
         private Button btnAceptar;
         private DateTimePicker dtpNacimiento;
-        private CheckBox chkCertificados;
     }
 }

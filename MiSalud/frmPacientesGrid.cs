@@ -90,6 +90,7 @@ namespace MiSalud
                 int fila = dgvPacientes.SelectedCells[0].RowIndex;
                 frmGridHistoriales frmGridHistoriales = new frmGridHistoriales();
                 frmGridHistoriales.Paciente = Convert.ToInt32(dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
+                frmGridHistoriales.Usuario = this.Usuario;
                 frmGridHistoriales.ShowDialog();
             }
             if (e.ColumnIndex == dgvPacientes.Columns["btnCertificados"].Index && e.RowIndex >= 0)

@@ -19,6 +19,7 @@ namespace MiSalud
         }
 
         public int Paciente { get; internal set; }
+        public int Usuario { get; internal set; }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -69,6 +70,10 @@ namespace MiSalud
         private void frmGridHistoriales_Load(object sender, EventArgs e)
         {
             CargarGrid();
+            if (this.Usuario == 1)
+            {
+                btnEliminar.Visible = false;
+            }
         }
         private void CargarGrid()
         {

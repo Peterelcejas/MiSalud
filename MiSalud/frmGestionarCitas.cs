@@ -38,6 +38,8 @@ namespace MiSalud
             {
                 lblMotivo.Visible = rtbMotivo.Visible = true;
                 rtbMotivo.ReadOnly = true;
+                btnAceptar.Visible = false;
+                btnCancelar.Text = "&Salir";
                 CargarDatos();
             }
             if (this.Usuario == 2)
@@ -130,7 +132,7 @@ namespace MiSalud
 
         private void frmGestionarCitas_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_estaGuardando)
+            if (!_estaGuardando && this.Usuario != 1)
             {
                 if (CamposLlenos() && !ConfirmarBorradoDatos())
                 {

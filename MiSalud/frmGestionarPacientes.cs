@@ -96,11 +96,9 @@ namespace MiSalud
                         dtpNacimiento.Text = tablaUpdate.Rows[0]["FECHA_NACIMIENTO"].ToString();
                         txtNombre.Text = tablaUpdate.Rows[0]["NOMBRE"].ToString();
                         txtApellidos.Text = tablaUpdate.Rows[0]["APELLIDOS"].ToString();
-                        chkCertificados.Checked = (bool)tablaUpdate.Rows[0]["CERTIFICADO_VACUNACION"];
                     }
 
                     lblNombreUsu.Visible = lblContrasegna.Visible = txtContrasegna.Visible = txtUsuario.Visible = btnVer.Visible = false;
-                    chkCertificados.Location = txtTelefono.Location;
                     lblEmail.Location = lblCiudad.Location;
                     txtEmail.Location = txtCiudad.Location;
                     lblTelefono.Location = lblDireccion.Location;
@@ -156,30 +154,16 @@ namespace MiSalud
             {
                 if (this.Actualiza)
                 {
-                    DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM CERTIFICADOS WHERE ID_PACIENTE = " + this.Paciente);
-                    if (!chkCertificados.Checked && tabla.Rows.Count > 0)
-                    {
-                        DialogResult result = MessageBox.Show("Se van a borrar los certificados del Paciente. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes)
-                        {
-                            VarGlobal.EjecutaSentencia("DELETE FROM CERTIFICADOS WHERE ID_PACIENTE = " + this.Paciente);
-                        }
-                        else
-                        {
-                            chkCertificados.Checked = true;
-                            return false;
-                        }
-                    }
                     VarGlobal.EjecutaSentencia("UPDATE PACIENTES SET nombre = '" + txtNombre.Text + "', apellidos = '" + txtApellidos.Text + "', fecha_nacimiento = '" + dtpNacimiento.Text.Substring(0, 10) + "', " +
                     "direccion = '" + txtDireccion.Text + "', ciudad = '" + txtCiudad.Text + "', telefono = '" + txtTelefono.Text + "', email = '" + txtEmail.Text +
-                    "', certificado_vacunacion = " + chkCertificados.Checked + " WHERE id = " + this.Paciente);
+                    "' WHERE id = " + this.Paciente);
                 }
                 else
                 {
                     VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text.Replace(" ", "") + "', '" + txtContrasegna.Text.Replace(" ", "") + "', 1)");
                     VarGlobal.EjecutaSentencia("INSERT INTO PACIENTES (nombre, apellidos, fecha_nacimiento, direccion, ciudad, telefono, email, certificado_vacunacion, id_usuario) " +
                                                   "VALUES ('" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + dtpNacimiento.Text.Substring(0, 10) + "', '" + txtDireccion.Text + "', '" + txtCiudad.Text + "', " +
-                                                  txtTelefono.Text + ", '" + txtEmail.Text + "', " + chkCertificados.Checked + ", (SELECT MAX(id) FROM Usuarios))");
+                                                  txtTelefono.Text + ", '" + txtEmail.Text + "', (SELECT MAX(id) FROM Usuarios))");
                 }
                 return true;
             }

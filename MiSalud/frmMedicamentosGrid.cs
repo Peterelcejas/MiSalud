@@ -21,9 +21,6 @@ namespace MiSalud
 
         private void frmMedicamentosGrid_Load(object sender, EventArgs e)
         {
-            btnAnyadir.Visible = false;
-            btnEliminar.Location = btnModificar.Location;
-            btnModificar.Location = btnAnyadir.Location;
             CargarGrid();
         }
 
