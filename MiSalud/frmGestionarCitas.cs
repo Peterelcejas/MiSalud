@@ -30,14 +30,60 @@ namespace MiSalud
             mtcFecha.MinDate = DateTime.Now;
             btnAceptar.FlatAppearance.BorderSize = 2;
             btnAceptar.FlatAppearance.BorderColor = Color.DodgerBlue;
-            CargaMedicos();
+            if (this.Usuario == 0)
+            {
+                CargaMedicos();
+            }
+            if (this.Usuario == 1)
+            {
+                lblMotivo.Visible = rtbMotivo.Visible = true;
+                rtbMotivo.ReadOnly = true;
+                CargarDatos();
+            }
+            if (this.Usuario == 2)
+            {
+                lblMotivo.Visible = rtbMotivo.Visible = true;
+                CargarDatos();
+            }
+        }
+
+        private void CargarDatos()
+        {
+            try
+            {
+                DataTable cita = VarGlobal.EjecutaConsulta("SELECT MEDICOS.NOMBRE, CITAS.FECHA, CITAS.HORA, CITAS.MOTIVO_CONSULTA FROM CITAS LEFT JOIN MEDICOS ON CITAS.ID_MEDICO = MEDICOS.ID" +
+                    " WHERE CITAS.ID = " + this.Cita);
+                cboHora.DataSource = cita;
+                cboHora.DisplayMember = "HORA";
+                cboHora.ValueMember = "HORA";
+                cboHora.SelectedText = cita.Rows[0]["HORA"].ToString();
+                
+
+                DataTable medico = VarGlobal.EjecutaConsulta("SELECT ID, NOMBRE FROM MEDICOS WHERE ID = " + this.Medico);
+                cboMedico.DataSource = medico;
+                cboMedico.DisplayMember = "NOMBRE";
+                cboMedico.ValueMember = "ID";
+                cboMedico.SelectedText = cita.Rows[0]["NOMBRE"].ToString();
+
+                rtbMotivo.Text = cita.Rows[0]["MOTIVO_CONSULTA"].ToString();
+                mtcFecha.SelectionStart = Convert.ToDateTime(cita.Rows[0]["FECHA"].ToString());
+
+                cboHora.Enabled = cboMedico.Enabled = mtcFecha.Enabled = false;
+
+                txtFechaCita.Text = mtcFecha.SelectionStart.ToString().Substring(0, 10) + " " + cboHora.Text + "H";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cboMedico_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboMedico.Text.Length > 0)
             {
-                mtcFecha.Enabled = true; CargaFechas();
+                mtcFecha.Enabled = true; 
+                CargaFechas();
             }
             else
             {
@@ -47,14 +93,17 @@ namespace MiSalud
 
         private void mtcFecha_DateChanged(object sender, DateRangeEventArgs e)
         {
-            if (mtcFecha.SelectionStart.ToString().Length > 0)
+            if (this.Usuario != 1)
             {
-                cboHora.Enabled = true;
-                CargaHoras();
-            }
-            else
-            {
-                cboHora.Enabled = false;
+                if (mtcFecha.SelectionStart.ToString().Length > 0)
+                {
+                    cboHora.Enabled = true;
+                    CargaHoras();
+                }
+                else
+                {
+                    cboHora.Enabled = false;
+                }
             }
         }
 

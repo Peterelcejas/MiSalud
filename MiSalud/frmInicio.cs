@@ -24,19 +24,20 @@ namespace MiSalud
 
         private void btnConsectarse_Click(object sender, EventArgs e)
         {
-            DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM Usuarios WHERE nombre_cuenta = '" + txtUsuario.Text + "' AND contrasena = '" + txtContrasegna.Text + "'");
+            DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM Usuarios WHERE nombre_cuenta = '" + txtUsuario.Text.Trim() + "' AND contrasena = '" + txtContrasegna.Text.Trim() + "'");
             if (tabla.Rows.Count > 0)
             {
                 switch (tabla.Rows[0]["tipo"])
                 {
                     case 0:
                         frmMainAdministrador frmMainAdministrador = new frmMainAdministrador();
+                        frmMainAdministrador.Usuario = Convert.ToInt32(tabla.Rows[0]["TIPO"]);
                         frmMainAdministrador.Show();
                         this.Hide();
                         break;
                     case 1:
                         frmMainMedico frmMainMedico = new frmMainMedico();
-                        frmMainMedico.Usuario = Convert.ToInt32(tabla.Rows[0]["id"]);
+                        frmMainMedico.Usuario = Convert.ToInt32(tabla.Rows[0]["TIPO"]);
                         frmMainMedico.Show();
                         this.Hide();
                         break;

@@ -34,9 +34,11 @@
             btnAceptar = new Button();
             cboMedico = new ComboBox();
             cboHora = new ComboBox();
-            mtcFecha = new MonthCalendar();
             lblFecha = new Label();
             txtFechaCita = new TextBox();
+            lblMotivo = new Label();
+            rtbMotivo = new RichTextBox();
+            mtcFecha = new MonthCalendar();
             SuspendLayout();
             // 
             // lblHora
@@ -66,7 +68,7 @@
             btnCancelar.FlatStyle = FlatStyle.Flat;
             btnCancelar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancelar.ForeColor = Color.Black;
-            btnCancelar.Location = new Point(735, 401);
+            btnCancelar.Location = new Point(735, 265);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(120, 38);
             btnCancelar.TabIndex = 61;
@@ -81,7 +83,7 @@
             btnAceptar.FlatStyle = FlatStyle.Flat;
             btnAceptar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnAceptar.ForeColor = Color.Black;
-            btnAceptar.Location = new Point(609, 401);
+            btnAceptar.Location = new Point(609, 265);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(120, 38);
             btnAceptar.TabIndex = 60;
@@ -110,14 +112,6 @@
             cboHora.TabIndex = 91;
             cboHora.SelectedIndexChanged += cboHora_SelectedIndexChanged;
             // 
-            // mtcFecha
-            // 
-            mtcFecha.Enabled = false;
-            mtcFecha.Location = new Point(625, 21);
-            mtcFecha.Name = "mtcFecha";
-            mtcFecha.TabIndex = 92;
-            mtcFecha.DateChanged += mtcFecha_DateChanged;
-            // 
             // lblFecha
             // 
             lblFecha.AutoSize = true;
@@ -139,12 +133,42 @@
             txtFechaCita.Size = new Size(323, 30);
             txtFechaCita.TabIndex = 94;
             // 
+            // lblMotivo
+            // 
+            lblMotivo.AutoSize = true;
+            lblMotivo.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblMotivo.Location = new Point(21, 153);
+            lblMotivo.Name = "lblMotivo";
+            lblMotivo.Size = new Size(176, 30);
+            lblMotivo.TabIndex = 95;
+            lblMotivo.Text = "Motivo de la Cita:";
+            lblMotivo.Visible = false;
+            // 
+            // rtbMotivo
+            // 
+            rtbMotivo.Location = new Point(224, 153);
+            rtbMotivo.Name = "rtbMotivo";
+            rtbMotivo.Size = new Size(323, 131);
+            rtbMotivo.TabIndex = 96;
+            rtbMotivo.Text = "";
+            rtbMotivo.Visible = false;
+            // 
+            // mtcFecha
+            // 
+            mtcFecha.Enabled = false;
+            mtcFecha.Location = new Point(625, 21);
+            mtcFecha.Name = "mtcFecha";
+            mtcFecha.TabIndex = 92;
+            mtcFecha.DateChanged += mtcFecha_DateChanged;
+            // 
             // frmGestionarCitas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Honeydew;
-            ClientSize = new Size(867, 451);
+            ClientSize = new Size(867, 315);
+            Controls.Add(rtbMotivo);
+            Controls.Add(lblMotivo);
             Controls.Add(txtFechaCita);
             Controls.Add(lblFecha);
             Controls.Add(mtcFecha);
@@ -170,8 +194,10 @@
         private Button btnAceptar;
         private ComboBox cboMedico;
         private ComboBox cboHora;
-        private MonthCalendar mtcFecha;
         private Label lblFecha;
         private TextBox txtFechaCita;
+        private Label lblMotivo;
+        private RichTextBox rtbMotivo;
+        private MonthCalendar mtcFecha;
     }
 }

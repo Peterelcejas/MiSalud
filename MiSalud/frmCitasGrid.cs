@@ -55,7 +55,7 @@ namespace MiSalud
                 int fila = dgvMedicos.SelectedCells[0].RowIndex;
                 frmGestionarCitas frmGestionarCitas = new frmGestionarCitas();
                 frmGestionarCitas.Cita = Convert.ToInt32(dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
-                frmGestionarCitas.Medico = Convert.ToInt32(dgvMedicos.Rows[fila].Cells["IDM"].Value.ToString());
+                frmGestionarCitas.Medico = this.Medico;
                 frmGestionarCitas.Usuario = this.Usuario;
                 frmGestionarCitas.ShowDialog();
                 CargarGrid();
@@ -65,6 +65,7 @@ namespace MiSalud
         private void CitasGrid_Load(object sender, EventArgs e)
         {
             CargarGrid();
+            if (this.Usuario == 1) { btnModificar.Text = "Consultar"; }
         }
 
         private void CargarGrid()

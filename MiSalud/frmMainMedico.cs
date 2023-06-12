@@ -17,6 +17,9 @@ namespace MiSalud
         public frmMainMedico()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.H_T_Misalud_logo;
+            btnCitas.Image = Properties.Resources.citas_128;
+            btnPacientes.Image = Properties.Resources.paciente_128;
         }
 
         private void tsmCitas_Click(object sender, EventArgs e)
@@ -24,51 +27,42 @@ namespace MiSalud
             AbirCitas();
         }
 
-        private void tsmCertificados_Click(object sender, EventArgs e)
-        {
-            AbirCertificados();
-        }
-
-        private void tsmMedicamentos_Click(object sender, EventArgs e)
-        {
-            AbirMedicamentos();
-        }
-
         private void btnCitas_Click(object sender, EventArgs e)
         {
             AbirCitas();
         }
 
-        private void btnCertificados_Click(object sender, EventArgs e)
+        private void btnPacientes_Click(object sender, EventArgs e)
         {
-            AbirCertificados();
+            AbrirPacientes();
         }
 
-        private void btnMedicamentos_Click(object sender, EventArgs e)
+        private void tsmPacientes_Click(object sender, EventArgs e)
         {
-            AbirMedicamentos();
+            AbrirPacientes();
         }
-        private void AbirMedicamentos()
+
+        private void AbrirPacientes()
         {
-            frmMedicamentosGrid frmMedicamentosGrid = new frmMedicamentosGrid();
-            frmMedicamentosGrid.ShowDialog();
+            frmPacientesGrid frmPacientesGrid = new frmPacientesGrid();
+            frmPacientesGrid.Usuario = this.Usuario;
+            frmPacientesGrid.ShowDialog();
         }
         private void AbirCitas()
         {
             try
             {
                 frmCitasGrid frmCitasGrid = new frmCitasGrid();
-                frmCitasGrid.Usuario = 1;
-                frmCitasGrid.Medico = Convert.ToInt32(VarGlobal.EjecutaConsulta("SELECT M.ID FROM USUARIOS AS S LEFT JOIN MEDICOS AS M ON S.ID = M.ID_USUARIO WHERE S.ID = " + this.Usuario));
+                frmCitasGrid.Usuario = this.Usuario;
+
+                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT M.ID FROM USUARIOS AS S LEFT JOIN MEDICOS AS M ON S.ID = M.ID_USUARIO WHERE S.ID = " + this.Usuario);
+                frmCitasGrid.Medico = Convert.ToInt32(tabla.Rows[0]["ID"].ToString());
                 frmCitasGrid.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void AbirCertificados()
-        {
         }
     }
 }

@@ -12,6 +12,8 @@ namespace MiSalud
 {
     public partial class frmPacientesGrid : Form
     {
+        public int Usuario { get; internal set; }
+
         public frmPacientesGrid()
         {
             InitializeComponent();
