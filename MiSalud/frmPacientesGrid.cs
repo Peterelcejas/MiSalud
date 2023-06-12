@@ -80,6 +80,7 @@ namespace MiSalud
         private void frmPacientesGrid_Load(object sender, EventArgs e)
         {
             CargarGrid();
+            if (this.Usuario == 1) { btnAnyadir.Visible = btnModificar.Visible = btnEliminar.Visible = false; }
         }
 
         private void dgvPacientes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -90,6 +91,14 @@ namespace MiSalud
                 frmGridHistoriales frmGridHistoriales = new frmGridHistoriales();
                 frmGridHistoriales.Paciente = Convert.ToInt32(dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
                 frmGridHistoriales.ShowDialog();
+            }
+            if (e.ColumnIndex == dgvPacientes.Columns["btnCertificados"].Index && e.RowIndex >= 0)
+            {
+                int fila = dgvPacientes.SelectedCells[0].RowIndex;
+                frmCertificadosGrid frmCertificadosGrid = new frmCertificadosGrid();
+                frmCertificadosGrid.Paciente = Convert.ToInt32(dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
+                frmCertificadosGrid.Usuario = this.Usuario;
+                frmCertificadosGrid.ShowDialog();
             }
         }
         private void CargarGrid()
@@ -102,8 +111,9 @@ namespace MiSalud
                 foreach (DataGridViewRow fila in dgvPacientes.Rows)
                 {
                     DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)fila.Cells["btnHistorial"];
-
                     buttonCell.Value = "Historial";
+                    buttonCell = (DataGridViewButtonCell)fila.Cells["btnCertificados"];
+                    buttonCell.Value = "Certificados";
                 }
             }
             catch (Exception ex)

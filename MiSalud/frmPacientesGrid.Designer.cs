@@ -37,6 +37,7 @@
             ID = new DataGridViewTextBoxColumn();
             ID_USUARIO = new DataGridViewTextBoxColumn();
             btnHistorial = new DataGridViewButtonColumn();
+            btnCertificados = new DataGridViewButtonColumn();
             NOMBRE = new DataGridViewTextBoxColumn();
             APELLIDOS = new DataGridViewTextBoxColumn();
             FECHA_NACIMIENTO = new DataGridViewTextBoxColumn();
@@ -55,7 +56,7 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.Black;
-            btnSalir.Location = new Point(660, 400);
+            btnSalir.Location = new Point(692, 416);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(120, 38);
             btnSalir.TabIndex = 23;
@@ -70,7 +71,7 @@
             btnModificar.FlatStyle = FlatStyle.Flat;
             btnModificar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnModificar.ForeColor = Color.Black;
-            btnModificar.Location = new Point(138, 400);
+            btnModificar.Location = new Point(138, 416);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(120, 38);
             btnModificar.TabIndex = 22;
@@ -85,7 +86,7 @@
             btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnEliminar.ForeColor = Color.Black;
-            btnEliminar.Location = new Point(264, 400);
+            btnEliminar.Location = new Point(264, 416);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(120, 38);
             btnEliminar.TabIndex = 21;
@@ -100,7 +101,7 @@
             btnAnyadir.FlatStyle = FlatStyle.Flat;
             btnAnyadir.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnAnyadir.ForeColor = Color.Black;
-            btnAnyadir.Location = new Point(12, 400);
+            btnAnyadir.Location = new Point(12, 416);
             btnAnyadir.Name = "btnAnyadir";
             btnAnyadir.Size = new Size(120, 38);
             btnAnyadir.TabIndex = 20;
@@ -124,13 +125,13 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvPacientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPacientes.Columns.AddRange(new DataGridViewColumn[] { ID, ID_USUARIO, btnHistorial, NOMBRE, APELLIDOS, FECHA_NACIMIENTO, DIRECCION, CIUDAD, TELEFONO, EMAIL, CERTIFICADO_VACUNACION });
+            dgvPacientes.Columns.AddRange(new DataGridViewColumn[] { ID, ID_USUARIO, btnHistorial, btnCertificados, NOMBRE, APELLIDOS, FECHA_NACIMIENTO, DIRECCION, CIUDAD, TELEFONO, EMAIL, CERTIFICADO_VACUNACION });
             dgvPacientes.EnableHeadersVisualStyles = false;
             dgvPacientes.Location = new Point(12, 42);
             dgvPacientes.Name = "dgvPacientes";
             dgvPacientes.ReadOnly = true;
             dgvPacientes.RowTemplate.Height = 25;
-            dgvPacientes.Size = new Size(768, 345);
+            dgvPacientes.Size = new Size(800, 361);
             dgvPacientes.TabIndex = 19;
             dgvPacientes.CellClick += dgvPacientes_CellClick;
             // 
@@ -156,6 +157,12 @@
             btnHistorial.Name = "btnHistorial";
             btnHistorial.ReadOnly = true;
             btnHistorial.Text = "";
+            // 
+            // btnCertificados
+            // 
+            btnCertificados.HeaderText = "";
+            btnCertificados.Name = "btnCertificados";
+            btnCertificados.ReadOnly = true;
             // 
             // NOMBRE
             // 
@@ -227,7 +234,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Honeydew;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(832, 466);
             Controls.Add(btnSalir);
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
@@ -251,6 +258,7 @@
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn ID_USUARIO;
         private DataGridViewButtonColumn btnHistorial;
+        private DataGridViewButtonColumn btnCertificados;
         private DataGridViewTextBoxColumn NOMBRE;
         private DataGridViewTextBoxColumn APELLIDOS;
         private DataGridViewTextBoxColumn FECHA_NACIMIENTO;
