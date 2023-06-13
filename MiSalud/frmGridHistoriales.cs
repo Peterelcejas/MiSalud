@@ -56,15 +56,11 @@ namespace MiSalud
 
         private void btnAnyadir_Click(object sender, EventArgs e)
         {
-            if (dgvHistorial.SelectedCells.Count > 0)
-            {
-                int fila = dgvHistorial.SelectedCells[0].RowIndex;
-                fmrGestionarHistoriales fmrGestionarHistoriales = new fmrGestionarHistoriales();
-                fmrGestionarHistoriales.Actualiza = false;
-                fmrGestionarHistoriales.Paciente = Convert.ToInt32(dgvHistorial.Rows[fila].Cells["IDP"].Value.ToString());
-                fmrGestionarHistoriales.ShowDialog();
-                CargarGrid();
-            }
+            fmrGestionarHistoriales fmrGestionarHistoriales = new fmrGestionarHistoriales();
+            fmrGestionarHistoriales.Actualiza = false;
+            fmrGestionarHistoriales.Paciente = this.Paciente;
+            fmrGestionarHistoriales.ShowDialog();
+            CargarGrid();
         }
 
         private void frmGridHistoriales_Load(object sender, EventArgs e)
@@ -73,6 +69,11 @@ namespace MiSalud
             if (this.Usuario == 1)
             {
                 btnEliminar.Visible = false;
+            }
+            if (this.Usuario == 2)
+            {
+                btnEliminar.Visible = btnModificar.Visible = false;
+                btnAnyadir.Text = "Consultar";
             }
         }
         private void CargarGrid()

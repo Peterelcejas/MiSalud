@@ -22,6 +22,8 @@ namespace MiSalud
         public int Cita { get; internal set; }
         public int Medico { get; internal set; }
         public int Usuario { get; internal set; }
+        public int Paciente { get; internal set; }
+        public bool Actualiza { get; internal set; }
 
         private bool _estaGuardando = false;
 
@@ -39,6 +41,7 @@ namespace MiSalud
                 lblMotivo.Visible = rtbMotivo.Visible = true;
                 rtbMotivo.ReadOnly = true;
                 btnAceptar.Visible = false;
+                cboHora.Enabled = cboMedico.Enabled = mtcFecha.Enabled = false;
                 btnCancelar.Text = "&Salir";
                 CargarDatos();
             }
@@ -53,26 +56,35 @@ namespace MiSalud
         {
             try
             {
-                DataTable cita = VarGlobal.EjecutaConsulta("SELECT MEDICOS.NOMBRE, CITAS.FECHA, CITAS.HORA, CITAS.MOTIVO_CONSULTA FROM CITAS LEFT JOIN MEDICOS ON CITAS.ID_MEDICO = MEDICOS.ID" +
+                if (this.Actualiza)
+                {
+                    DataTable cita = VarGlobal.EjecutaConsulta("SELECT MEDICOS.NOMBRE, CITAS.FECHA, CITAS.HORA, CITAS.MOTIVO_CONSULTA FROM CITAS LEFT JOIN MEDICOS ON CITAS.ID_MEDICO = MEDICOS.ID" +
                     " WHERE CITAS.ID = " + this.Cita);
-                cboHora.DataSource = cita;
-                cboHora.DisplayMember = "HORA";
-                cboHora.ValueMember = "HORA";
-                cboHora.SelectedText = cita.Rows[0]["HORA"].ToString();
-                
+                    cboHora.DataSource = cita;
+                    cboHora.DisplayMember = "HORA";
+                    cboHora.ValueMember = "HORA";
 
-                DataTable medico = VarGlobal.EjecutaConsulta("SELECT ID, NOMBRE FROM MEDICOS WHERE ID = " + this.Medico);
-                cboMedico.DataSource = medico;
-                cboMedico.DisplayMember = "NOMBRE";
-                cboMedico.ValueMember = "ID";
-                cboMedico.SelectedText = cita.Rows[0]["NOMBRE"].ToString();
+                    DataTable medico = VarGlobal.EjecutaConsulta("SELECT MEDICOS.ID, MEDICOS.NOMBRE FROM MEDICOS LEFT JOIN CITAS ON  MEDICOS.ID = CITAS.ID_MEDICO WHERE CITAS.ID = " + this.Cita);
+                    cboMedico.DataSource = medico;
+                    cboMedico.DisplayMember = "NOMBRE";
+                    cboMedico.ValueMember = "ID";
 
-                rtbMotivo.Text = cita.Rows[0]["MOTIVO_CONSULTA"].ToString();
-                mtcFecha.SelectionStart = Convert.ToDateTime(cita.Rows[0]["FECHA"].ToString());
+                    cboMedico.SelectedText = cita.Rows[0]["NOMBRE"].ToString();
+                    cboHora.SelectedText = cita.Rows[0]["HORA"].ToString();
+                    rtbMotivo.Text = cita.Rows[0]["MOTIVO_CONSULTA"].ToString();
+                    mtcFecha.SelectionStart = Convert.ToDateTime(cita.Rows[0]["FECHA"].ToString());
+                    txtFechaCita.Text = mtcFecha.SelectionStart.ToString().Substring(0, 10) + " " + cita.Rows[0]["HORA"].ToString() + "H";
+                }
+                else
+                {
+                    DataTable medico = VarGlobal.EjecutaConsulta("SELECT ID, NOMBRE FROM MEDICOS");
+                    DataRow filaVacia = medico.NewRow();
+                    medico.Rows.InsertAt(filaVacia, 0);
 
-                cboHora.Enabled = cboMedico.Enabled = mtcFecha.Enabled = false;
-
-                txtFechaCita.Text = mtcFecha.SelectionStart.ToString().Substring(0, 10) + " " + cboHora.Text + "H";
+                    cboMedico.DataSource = medico;
+                    cboMedico.DisplayMember = "NOMBRE";
+                    cboMedico.ValueMember = "ID";
+                }
             }
             catch (Exception ex)
             {
@@ -208,8 +220,16 @@ namespace MiSalud
         {
             try
             {
-                VarGlobal.EjecutaSentencia("UPDATE CITAS SET id_medico = (SELECT ID FROM MEDICOS WHERE NOMBRE = '" + cboMedico.Text + "'), fecha = '" + mtcFecha.SelectionStart.ToString() +
-                    "', hora = " + Convert.ToInt32(cboHora.Text) + " WHERE id = " + this.Cita);
+                if (this.Actualiza)
+                {
+                    VarGlobal.EjecutaSentencia("UPDATE CITAS SET id_medico = (SELECT ID FROM MEDICOS WHERE NOMBRE = '" + cboMedico.Text + "'), fecha = '" + mtcFecha.SelectionStart.ToString() +
+                        "', hora = " + Convert.ToInt32(cboHora.Text) + " WHERE id = " + this.Cita);
+                }
+                else
+                {
+                    VarGlobal.EjecutaSentencia("INSERT INTO CITAS (fecha, hora, id_paciente, id_medico, motivo_consulta) VALUES ('" + mtcFecha.SelectionStart.ToString() + "', " + 
+                        Convert.ToInt32(cboHora.Text) + ", " + this.Paciente + ", (SELECT ID FROM MEDICOS WHERE NOMBRE = '" + cboMedico.Text + "'), '" + rtbMotivo.Text + "')");
+                }
                 return true;
             }
             catch (Exception ex)

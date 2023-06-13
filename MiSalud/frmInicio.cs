@@ -43,6 +43,10 @@ namespace MiSalud
                         this.Hide();
                         break;
                     case 2:
+                        frmMainPacientes frmMainPacientes = new frmMainPacientes();
+                        frmMainPacientes.Usuario = Convert.ToInt32(tabla.Rows[0]["TIPO"]);
+                        frmMainPacientes.IdUsuario = Convert.ToInt32(tabla.Rows[0]["ID"]);
+                        frmMainPacientes.Show();
                         this.Hide();
                         break;
                 }

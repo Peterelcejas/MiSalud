@@ -14,6 +14,7 @@ namespace MiSalud
     {
         public int Medico { get; internal set; }
         public int Usuario { get; internal set; }
+        public int Paciente { get; internal set; }
 
         public frmCitasGrid()
         {
@@ -57,6 +58,7 @@ namespace MiSalud
                 frmGestionarCitas.Cita = Convert.ToInt32(dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
                 frmGestionarCitas.Medico = this.Medico;
                 frmGestionarCitas.Usuario = this.Usuario;
+                frmGestionarCitas.Actualiza = true;
                 frmGestionarCitas.ShowDialog();
                 CargarGrid();
             }
@@ -66,20 +68,45 @@ namespace MiSalud
         {
             CargarGrid();
             if (this.Usuario == 1) { btnModificar.Text = "Consultar"; }
+            if (this.Usuario != 2)
+            {
+                btnAnyadir.Visible = false;
+                btnEliminar.Location = btnModificar.Location;
+                btnModificar.Location = btnAnyadir.Location;
+            }
         }
 
         private void CargarGrid()
         {
             try
             {
-                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT C.ID, C.ID_MEDICO AS IDM, CONCAT(C.FECHA || ' ' || C.HORA || 'H') AS FECHA, M.NOMBRE AS MEDICO, P.NOMBRE AS PACIENTE, C.MOTIVO_CONSULTA FROM citas AS C " +
-                    "LEFT JOIN MEDICOS AS M ON C.ID_MEDICO = M.ID LEFT JOIN PACIENTES AS P ON C.ID_PACIENTE = P.ID WHERE C.ID_MEDICO = " + this.Medico);
-                dgvMedicos.DataSource = tabla;
+                if (this.Usuario != 2)
+                {
+                    DataTable tabla = VarGlobal.EjecutaConsulta("SELECT C.ID, C.ID_MEDICO AS IDM, CONCAT(C.FECHA || ' ' || C.HORA || 'H') AS FECHA, M.NOMBRE AS MEDICO, P.NOMBRE AS PACIENTE, C.MOTIVO_CONSULTA FROM citas AS C " +
+                        "LEFT JOIN MEDICOS AS M ON C.ID_MEDICO = M.ID LEFT JOIN PACIENTES AS P ON C.ID_PACIENTE = P.ID WHERE C.ID_MEDICO = " + this.Medico);
+                    dgvMedicos.DataSource = tabla;
+                }
+                else
+                {
+                    DataTable tabla = VarGlobal.EjecutaConsulta("SELECT C.ID, C.ID_MEDICO AS IDM, CONCAT(C.FECHA || ' ' || C.HORA || 'H') AS FECHA, M.NOMBRE AS MEDICO, P.NOMBRE AS PACIENTE, C.MOTIVO_CONSULTA FROM citas AS C " +
+                        "LEFT JOIN MEDICOS AS M ON C.ID_MEDICO = M.ID LEFT JOIN PACIENTES AS P ON C.ID_PACIENTE = P.ID WHERE C.ID_PACIENTE = " + this.Paciente);
+                    dgvMedicos.DataSource = tabla;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnAnyadir_Click(object sender, EventArgs e)
+        {
+            frmGestionarCitas frmGestionarCitas = new frmGestionarCitas();
+            frmGestionarCitas.Paciente = this.Paciente;
+            frmGestionarCitas.Usuario = this.Usuario;
+            frmGestionarCitas.Actualiza = false;
+            frmGestionarCitas.ShowDialog();
+            CargarGrid();
         }
     }
 }

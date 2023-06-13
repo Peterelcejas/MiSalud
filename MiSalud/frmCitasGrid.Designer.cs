@@ -39,6 +39,7 @@
             MEDICO = new DataGridViewTextBoxColumn();
             PACIENTE = new DataGridViewTextBoxColumn();
             MOTIVO_CONSULTA = new DataGridViewTextBoxColumn();
+            btnAnyadir = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvMedicos).BeginInit();
             SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             btnModificar.FlatStyle = FlatStyle.Flat;
             btnModificar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnModificar.ForeColor = Color.Black;
-            btnModificar.Location = new Point(15, 385);
+            btnModificar.Location = new Point(142, 385);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(120, 38);
             btnModificar.TabIndex = 22;
@@ -79,7 +80,7 @@
             btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnEliminar.ForeColor = Color.Black;
-            btnEliminar.Location = new Point(141, 385);
+            btnEliminar.Location = new Point(267, 385);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(120, 38);
             btnEliminar.TabIndex = 21;
@@ -156,12 +157,28 @@
             MOTIVO_CONSULTA.Name = "MOTIVO_CONSULTA";
             MOTIVO_CONSULTA.ReadOnly = true;
             // 
+            // btnAnyadir
+            // 
+            btnAnyadir.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAnyadir.BackColor = Color.FromArgb(224, 224, 224);
+            btnAnyadir.FlatStyle = FlatStyle.Flat;
+            btnAnyadir.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAnyadir.ForeColor = Color.Black;
+            btnAnyadir.Location = new Point(16, 385);
+            btnAnyadir.Name = "btnAnyadir";
+            btnAnyadir.Size = new Size(120, 38);
+            btnAnyadir.TabIndex = 24;
+            btnAnyadir.Text = "Añadir";
+            btnAnyadir.UseVisualStyleBackColor = false;
+            btnAnyadir.Click += btnAnyadir_Click;
+            // 
             // frmCitasGrid
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Honeydew;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnAnyadir);
             Controls.Add(btnSalir);
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
@@ -186,5 +203,6 @@
         private DataGridViewTextBoxColumn MEDICO;
         private DataGridViewTextBoxColumn PACIENTE;
         private DataGridViewTextBoxColumn MOTIVO_CONSULTA;
+        private Button btnAnyadir;
     }
 }
