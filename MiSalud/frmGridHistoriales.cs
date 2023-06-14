@@ -43,12 +43,13 @@ namespace MiSalud
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (dgvHistorial.SelectedCells.Count > 0)
+            if (dgvHistorial.SelectedCells.Count > 0 || this.Usuario == 2)
             {
                 int fila = dgvHistorial.SelectedCells[0].RowIndex;
                 fmrGestionarHistoriales fmrGestionarHistoriales = new fmrGestionarHistoriales();
                 fmrGestionarHistoriales.Actualiza = true;
                 fmrGestionarHistoriales.Historial = Convert.ToInt32(dgvHistorial.Rows[fila].Cells["ID"].Value.ToString());
+                fmrGestionarHistoriales.Usuario = this.Usuario;
                 fmrGestionarHistoriales.ShowDialog();
                 CargarGrid();
             }
@@ -72,8 +73,9 @@ namespace MiSalud
             }
             if (this.Usuario == 2)
             {
-                btnEliminar.Visible = btnModificar.Visible = false;
-                btnAnyadir.Text = "Consultar";
+                btnEliminar.Visible = btnAnyadir.Visible = false;
+                btnModificar.Location = btnAnyadir.Location;
+                btnModificar.Text = "Consultar";
             }
         }
         private void CargarGrid()

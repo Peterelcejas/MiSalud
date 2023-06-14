@@ -22,6 +22,7 @@ namespace MiSalud
         public bool Actualiza { get; internal set; }
         public int Historial { get; internal set; }
         public int Paciente { get; internal set; }
+        public int Usuario { get; internal set; }
 
         private bool _estaGuardando = false;
 
@@ -65,33 +66,27 @@ namespace MiSalud
         {
             try
             {
-                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM HISTORIAL_MEDICAMENTOS WHERE ID = " + this.Historial);
-
                 btnAceptar.FlatAppearance.BorderSize = 2;
                 btnAceptar.FlatAppearance.BorderColor = Color.DodgerBlue;
                 dtpFechaFin.MinDate = DateTime.Now.AddMonths(1);
+                CargarDatos();
                 if (this.Actualiza)
                 {
-                    if (tabla.Rows.Count > 0)
+                    if (this.Usuario != 2)
                     {
-                        dtpFechaFin.Text = tabla.Rows[0]["FECHA_FIN"].ToString();
+                        cboMedicamento.Visible = dtpFechaIni.Visible = lblFechaIni.Visible = lblNombreM.Visible = false;
+                        dtpFechaFin.Location = cboMedicamento.Location;
+                        lblFechaFin.Location = lblNombreM.Location;
+                        this.Size = new Size(883, 200);
                     }
-                    cboMedicamento.Visible = dtpFechaIni.Visible = lblFechaIni.Visible = lblNombreM.Visible = false;
-                    dtpFechaFin.Location = cboMedicamento.Location;
-                    lblFechaFin.Location = lblNombreM.Location;
-                    this.Size = new Size(883, 200);
+                    else
+                    {
+                        btnAceptar.Visible = cboMedicamento.Enabled = dtpFechaFin.Enabled = dtpFechaIni.Enabled = false;
+                        btnCancelar.Text = "Salir";
+                    }
                 }
                 else
                 {
-                    tabla = VarGlobal.EjecutaConsulta("SELECT * FROM MEDICAMENTOS");
-                    DataRow filaVacia = tabla.NewRow();
-                    tabla.Rows.InsertAt(filaVacia, 0);
-
-                    cboMedicamento.DataSource = tabla;
-                    cboMedicamento.DisplayMember = "Nombre";
-                    cboMedicamento.ValueMember = "ID";
-
-                    dtpFechaIni.Value = DateTime.Now;
                     dtpFechaIni.Enabled = false;
                 }
             }
@@ -102,17 +97,23 @@ namespace MiSalud
         }
         private bool ConfirmarBorradoDatos()
         {
-            if (this.Actualiza)
+            if (this.Usuario != 2)
             {
-                DialogResult result = MessageBox.Show("No se va a actualizar el Paciente. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                return result == DialogResult.Yes;
+                if (this.Actualiza)
+                {
+                    DialogResult result = MessageBox.Show("No se va a actualizar el Paciente. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    return result == DialogResult.Yes;
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Se borrará los datos introducidos. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    return result == DialogResult.Yes;
+                }
             }
             else
             {
-                DialogResult result = MessageBox.Show("Se borrará los datos introducidos. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                return result == DialogResult.Yes;
+                return true;
             }
-
         }
 
         private bool CamposLlenos()
@@ -138,6 +139,46 @@ namespace MiSalud
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+        private void CargarDatos()
+        {
+            try
+            {
+                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT H.FECHA_INICIO, H.FECHA_FIN, M.NOMBRE FROM HISTORIAL_MEDICAMENTOS H LEFT JOIN MEDICAMENTOS M ON H.ID_MEDICAMENTO = M.ID WHERE H.ID = " + this.Historial);
+                if (this.Actualiza)
+                {
+                    if (tabla.Rows.Count > 0)
+                    {
+                        if (this.Usuario == 2)
+                        {
+                            DataTable medicamento = VarGlobal.EjecutaConsulta("SELECT ID, NOMBRE FROM MEDICAMENTOS");
+                            DataRow filaVacia = medicamento.NewRow();
+                            medicamento.Rows.InsertAt(filaVacia, 0);
+
+                            cboMedicamento.DataSource = medicamento;
+                            cboMedicamento.DisplayMember = "NOMBRE";
+                            cboMedicamento.ValueMember = "ID";
+                        }
+                        dtpFechaFin.Text = tabla.Rows[0]["FECHA_FIN"].ToString();
+                        dtpFechaIni.Text = tabla.Rows[0]["FECHA_INICIO"].ToString();
+                        cboMedicamento.Text = tabla.Rows[0]["NOMBRE"].ToString();
+                    }
+                }
+                else
+                {
+                    tabla = VarGlobal.EjecutaConsulta("SELECT * FROM MEDICAMENTOS");
+                    DataRow filaVacia = tabla.NewRow();
+                    tabla.Rows.InsertAt(filaVacia, 0);
+
+                    cboMedicamento.DataSource = tabla;
+                    cboMedicamento.DisplayMember = "Nombre";
+                    cboMedicamento.ValueMember = "ID";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
