@@ -29,23 +29,26 @@ namespace MiSalud
         {
             try
             {
-                DialogResult result = MessageBox.Show("Se va a eliminar el paciente ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
+                if (dgvPacientes.SelectedCells.Count > 0)
                 {
-                    if (dgvPacientes.SelectedCells.Count > 0)
-                    {
-                        int fila = dgvPacientes.SelectedCells[0].RowIndex;
-                        DataTable tablaCitas = VarGlobal.EjecutaConsulta("SELECT * FROM CITAS LEFT JOIN PACIENTES ON CITAS.ID_PACIENTE = PACIENTES.ID WHERE PACIENTES.ID = " + dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
+                    DialogResult result = MessageBox.Show("Se va a eliminar el paciente ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                        if (tablaCitas.Rows.Count > 0)
+                    if (result == DialogResult.Yes)
+                    {
+                        if (dgvPacientes.SelectedCells.Count > 0)
                         {
-                            MessageBox.Show("No se puede eliminar tiene citas asociadas", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            VarGlobal.EjecutaSentencia("DELETE FROM PACIENTES WHERE ID = " + dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
-                            CargarGrid();
+                            int fila = dgvPacientes.SelectedCells[0].RowIndex;
+                            DataTable tablaCitas = VarGlobal.EjecutaConsulta("SELECT * FROM CITAS LEFT JOIN PACIENTES ON CITAS.ID_PACIENTE = PACIENTES.ID WHERE PACIENTES.ID = " + dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
+
+                            if (tablaCitas.Rows.Count > 0)
+                            {
+                                MessageBox.Show("No se puede eliminar tiene citas asociadas", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                VarGlobal.EjecutaSentencia("DELETE FROM PACIENTES WHERE ID = " + dgvPacientes.Rows[fila].Cells["ID"].Value.ToString());
+                                CargarGrid();
+                            }
                         }
                     }
                 }

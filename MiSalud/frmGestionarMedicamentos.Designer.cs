@@ -51,7 +51,7 @@
             txtNombre.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtNombre.BackColor = Color.FromArgb(224, 224, 224);
             txtNombre.Location = new Point(256, 22);
-            txtNombre.MaxLength = 9;
+            txtNombre.MaxLength = 90;
             txtNombre.MinimumSize = new Size(300, 30);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(427, 30);

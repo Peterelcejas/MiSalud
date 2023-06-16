@@ -160,10 +160,20 @@ namespace MiSalud
                 }
                 else
                 {
-                    VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text.Replace(" ", "") + "', '" + txtContrasegna.Text.Replace(" ", "") + "', 1)");
-                    VarGlobal.EjecutaSentencia("INSERT INTO PACIENTES (nombre, apellidos, fecha_nacimiento, direccion, ciudad, telefono, email, certificado_vacunacion, id_usuario) " +
-                                                  "VALUES ('" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + dtpNacimiento.Text.Substring(0, 10) + "', '" + txtDireccion.Text + "', '" + txtCiudad.Text + "', " +
-                                                  txtTelefono.Text + ", '" + txtEmail.Text + "', (SELECT MAX(id) FROM Usuarios))");
+                    DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM USUARIOS WHERE NOMBRE_CUENTA = '" + txtUsuario.Text.Replace(" ", "") + "'");
+                    if (tabla.Rows.Count > 0)
+                    {
+                        MessageBox.Show("Ya existe un usuario con esa cuenta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        return false;
+                    }
+                    else
+                    {
+                        VarGlobal.EjecutaSentencia("INSERT INTO Usuarios (nombre_cuenta, contrasena, tipo) VALUES ('" + txtUsuario.Text.Replace(" ", "") + "', '" + txtContrasegna.Text.Replace(" ", "") + "', 1)");
+                        VarGlobal.EjecutaSentencia("INSERT INTO PACIENTES (nombre, apellidos, fecha_nacimiento, direccion, ciudad, telefono, email, id_usuario) " +
+                                                      "VALUES ('" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + dtpNacimiento.Text.Substring(0, 10) + "', '" + txtDireccion.Text + "', '" + txtCiudad.Text + "', " +
+                                                      txtTelefono.Text + ", '" + txtEmail.Text + "', (SELECT MAX(id) FROM Usuarios))");
+                    }
                 }
                 return true;
             }

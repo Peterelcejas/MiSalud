@@ -32,23 +32,26 @@ namespace MiSalud
         {
             try
             {
-                DialogResult result = MessageBox.Show("Se va a eliminar el medico ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
+                if (dgvMedicos.SelectedCells.Count > 0)
                 {
-                    if (dgvMedicos.SelectedCells.Count > 0)
-                    {
-                        int fila = dgvMedicos.SelectedCells[0].RowIndex;
-                        DataTable tablaCitas = VarGlobal.EjecutaConsulta("SELECT * FROM CITAS LEFT JOIN MEDICOS ON CITAS.ID_MEDICO = MEDICOS.ID WHERE MEDICOS.ID = " + dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
+                    DialogResult result = MessageBox.Show("Se va a eliminar el medico ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                        if (tablaCitas.Rows.Count > 0)
+                    if (result == DialogResult.Yes)
+                    {
+                        if (dgvMedicos.SelectedCells.Count > 0)
                         {
-                            MessageBox.Show("No se puede eliminar tiene citas asociadas", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            VarGlobal.EjecutaSentencia("DELETE FROM MEDICOS WHERE ID = " + dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
-                            CargarGrid();
+                            int fila = dgvMedicos.SelectedCells[0].RowIndex;
+                            DataTable tablaCitas = VarGlobal.EjecutaConsulta("SELECT * FROM CITAS LEFT JOIN MEDICOS ON CITAS.ID_MEDICO = MEDICOS.ID WHERE MEDICOS.ID = " + dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
+
+                            if (tablaCitas.Rows.Count > 0)
+                            {
+                                MessageBox.Show("No se puede eliminar tiene citas asociadas", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                VarGlobal.EjecutaSentencia("DELETE FROM MEDICOS WHERE ID = " + dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
+                                CargarGrid();
+                            }
                         }
                     }
                 }

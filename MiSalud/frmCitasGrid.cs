@@ -31,15 +31,18 @@ namespace MiSalud
         {
             try
             {
-                DialogResult result = MessageBox.Show("Se va a eliminar la cita ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
+                if (dgvCitas.SelectedCells.Count > 0)
                 {
-                    if (dgvCitas.SelectedCells.Count > 0)
+                    DialogResult result = MessageBox.Show("Se va a eliminar la cita ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
                     {
-                        int fila = dgvCitas.SelectedCells[0].RowIndex;
-                        VarGlobal.EjecutaSentencia("DELETE FROM CITAS WHERE ID = " + dgvCitas.Rows[fila].Cells["ID"].Value.ToString());
-                        CargarGrid();
+                        if (dgvCitas.SelectedCells.Count > 0)
+                        {
+                            int fila = dgvCitas.SelectedCells[0].RowIndex;
+                            VarGlobal.EjecutaSentencia("DELETE FROM CITAS WHERE ID = " + dgvCitas.Rows[fila].Cells["ID"].Value.ToString());
+                            CargarGrid();
+                        }
                     }
                 }
             }
