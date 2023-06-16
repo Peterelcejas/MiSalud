@@ -218,7 +218,7 @@
             Controls.Add(dgvMedicos);
             Name = "frmMedicosGrid";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Medicos";
+            Text = "Médicos";
             Load += frmMedicosGrid_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMedicos).EndInit();
             ResumeLayout(false);

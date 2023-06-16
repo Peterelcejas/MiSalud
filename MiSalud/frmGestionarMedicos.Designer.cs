@@ -163,7 +163,7 @@
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(97, 30);
             lblTelefono.TabIndex = 44;
-            lblTelefono.Text = "Telefono:";
+            lblTelefono.Text = "Teléfono:";
             // 
             // lblCiudad
             // 

@@ -139,7 +139,7 @@
             lblDireccion.Name = "lblDireccion";
             lblDireccion.Size = new Size(105, 30);
             lblDireccion.TabIndex = 18;
-            lblDireccion.Text = "Direccion:";
+            lblDireccion.Text = "Dirección:";
             // 
             // lblCiudad
             // 
@@ -159,7 +159,7 @@
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(97, 30);
             lblTelefono.TabIndex = 20;
-            lblTelefono.Text = "Telefono:";
+            lblTelefono.Text = "Teléfono:";
             // 
             // lblEmail
             // 

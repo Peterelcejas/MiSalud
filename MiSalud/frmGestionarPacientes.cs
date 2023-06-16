@@ -132,12 +132,12 @@ namespace MiSalud
         {
             if (this.Actualiza)
             {
-                DialogResult result = MessageBox.Show("No se va a actualizar el Paciente. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("No se va a actualizar el paciente. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 return result == DialogResult.Yes;
             }
             else
             {
-                DialogResult result = MessageBox.Show("Se borrará los datos introducidos. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Se borrarán los datos introducidos. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 return result == DialogResult.Yes;
             }
 
@@ -163,7 +163,7 @@ namespace MiSalud
                     DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM USUARIOS WHERE NOMBRE_CUENTA = '" + txtUsuario.Text.Replace(" ", "") + "'");
                     if (tabla.Rows.Count > 0)
                     {
-                        MessageBox.Show("Ya existe un usuario con esa cuenta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Ya existe un usuario con ese nombre de cuenta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                         return false;
                     }

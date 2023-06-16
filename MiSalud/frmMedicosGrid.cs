@@ -34,7 +34,7 @@ namespace MiSalud
             {
                 if (dgvMedicos.SelectedCells.Count > 0)
                 {
-                    DialogResult result = MessageBox.Show("Se va a eliminar el medico ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("Se va a eliminar el médico ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
