@@ -115,8 +115,9 @@ namespace MiSalud
             CargarGrid();
         }
 
-        private void dgvMedicos_SelectionChanged(object sender, EventArgs e)
+        private void dgvCitas_SelectionChanged(object sender, EventArgs e)
         {
+            /*
             if (this.Usuario == 2)
             {
                 if (dgvCitas.SelectedCells.Count > 0)
@@ -128,7 +129,7 @@ namespace MiSalud
                     }
                 }
 
-            }
+            }*/
         }
     }
 }
