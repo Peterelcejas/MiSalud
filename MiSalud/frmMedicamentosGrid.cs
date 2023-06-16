@@ -54,8 +54,16 @@ namespace MiSalud
                 if (result == DialogResult.Yes)
                 {
                     int fila = dgvMedicamentos.SelectedCells[0].RowIndex;
-                    VarGlobal.EjecutaSentencia("DELETE FROM MEDICAMENTOS WHERE ID = " + dgvMedicamentos.Rows[fila].Cells["ID"].Value.ToString());
-                    CargarGrid();
+                    DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM HISTORIAL_MEDICAMENTOS WHERE ID_MEDICAMENTO = " + Convert.ToInt32(dgvMedicamentos.Rows[fila].Cells["ID"].Value.ToString()));
+                    if (tabla.Rows.Count > 0)
+                    {
+                        MessageBox.Show("Este mediamento no se puede eliminar porque pertenece a un tratamiento.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        VarGlobal.EjecutaSentencia("DELETE FROM MEDICAMENTOS WHERE ID = " + dgvMedicamentos.Rows[fila].Cells["ID"].Value.ToString());
+                        CargarGrid();
+                    }
                 }
             }
             catch (Exception ex)

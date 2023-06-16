@@ -267,6 +267,7 @@
             // 
             // dtpNacimiento
             // 
+            dtpNacimiento.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpNacimiento.Format = DateTimePickerFormat.Short;
             dtpNacimiento.Location = new Point(264, 188);
             dtpNacimiento.MinimumSize = new Size(427, 30);

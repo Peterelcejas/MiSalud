@@ -96,7 +96,7 @@ namespace MiSalud
         {
             if (cboMedico.Text.Length > 0)
             {
-                mtcFecha.Enabled = true; 
+                mtcFecha.Enabled = true;
                 CargaFechas();
             }
             else
@@ -227,7 +227,7 @@ namespace MiSalud
                 }
                 else
                 {
-                    VarGlobal.EjecutaSentencia("INSERT INTO CITAS (fecha, hora, id_paciente, id_medico, motivo_consulta) VALUES ('" + mtcFecha.SelectionStart.ToString() + "', " + 
+                    VarGlobal.EjecutaSentencia("INSERT INTO CITAS (fecha, hora, id_paciente, id_medico, motivo_consulta) VALUES ('" + mtcFecha.SelectionStart.ToString() + "', " +
                         Convert.ToInt32(cboHora.Text) + ", " + this.Paciente + ", (SELECT ID FROM MEDICOS WHERE NOMBRE = '" + cboMedico.Text + "'), '" + rtbMotivo.Text + "')");
                 }
                 return true;

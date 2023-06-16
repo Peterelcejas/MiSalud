@@ -30,11 +30,11 @@ namespace MiSalud
         {
             if (!(cboMedicamento.SelectedIndex != 0 && dtpFechaIni.Text.Length > 0 && dtpFechaFin.Text.Length > 0) && !this.Actualiza)
             {
-                MessageBox.Show("Tienes que rellenar todos los campos para introducir el paciente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tienes que rellenar todos los campos para introducir el historial.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (!(dtpFechaFin.Text.Length > 0))
             {
-                MessageBox.Show("Tienes que rellenar todos los campos para actualizar el paciente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tienes que rellenar todos los campos para actualizar el historial.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -101,7 +101,7 @@ namespace MiSalud
             {
                 if (this.Actualiza)
                 {
-                    DialogResult result = MessageBox.Show("No se va a actualizar el Paciente. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("No se va a actualizar el historial. ¿Quieres continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     return result == DialogResult.Yes;
                 }
                 else

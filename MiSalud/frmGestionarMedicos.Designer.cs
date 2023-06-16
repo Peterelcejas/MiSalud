@@ -304,7 +304,7 @@
             Controls.Add(btnAceptar);
             Name = "frmGestionarMedicos";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Medico";
+            Text = "Detalle del Medico";
             FormClosing += frmGestionarMedicos_FormClosing;
             Load += frmGestionarMedicos_Load;
             ResumeLayout(false);

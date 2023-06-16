@@ -121,7 +121,7 @@
             Controls.Add(btnAceptar);
             Name = "frmGestionarMedicamentos";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Medicamento";
+            Text = "Detalle del Medicamento";
             FormClosing += frmGestionarMedicamentos_FormClosing;
             Load += frmGestionarMedicamentos_Load;
             ResumeLayout(false);

@@ -180,7 +180,7 @@
             Controls.Add(btnAceptar);
             Name = "frmGestionarCitas";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Cita";
+            Text = "Detalle de la Cita";
             FormClosing += frmGestionarCitas_FormClosing;
             Load += frmGestionarCitas_Load;
             ResumeLayout(false);

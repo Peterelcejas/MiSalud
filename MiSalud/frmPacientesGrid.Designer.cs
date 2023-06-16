@@ -163,6 +163,7 @@
             btnCertificados.HeaderText = "";
             btnCertificados.Name = "btnCertificados";
             btnCertificados.ReadOnly = true;
+            btnCertificados.Visible = false;
             // 
             // NOMBRE
             // 
