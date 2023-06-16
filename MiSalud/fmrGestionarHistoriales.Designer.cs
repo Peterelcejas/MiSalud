@@ -40,6 +40,7 @@
             // 
             // dtpFechaIni
             // 
+            dtpFechaIni.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpFechaIni.Format = DateTimePickerFormat.Short;
             dtpFechaIni.Location = new Point(272, 70);
             dtpFechaIni.MinimumSize = new Size(427, 30);
@@ -101,6 +102,7 @@
             // 
             // dtpFechaFin
             // 
+            dtpFechaFin.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpFechaFin.Format = DateTimePickerFormat.Short;
             dtpFechaFin.Location = new Point(272, 116);
             dtpFechaFin.MinimumSize = new Size(427, 30);
@@ -122,6 +124,7 @@
             // 
             // cboMedicamento
             // 
+            cboMedicamento.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             cboMedicamento.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMedicamento.FormattingEnabled = true;
             cboMedicamento.Location = new Point(272, 30);
