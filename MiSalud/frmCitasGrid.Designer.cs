@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             btnSalir = new Button();
             btnModificar = new Button();
             btnEliminar = new Button();
-            dgvMedicos = new DataGridView();
+            dgvCitas = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             IDM = new DataGridViewTextBoxColumn();
             FECHA = new DataGridViewTextBoxColumn();
@@ -40,7 +40,7 @@
             PACIENTE = new DataGridViewTextBoxColumn();
             MOTIVO_CONSULTA = new DataGridViewTextBoxColumn();
             btnAnyadir = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvMedicos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCitas).BeginInit();
             SuspendLayout();
             // 
             // btnSalir
@@ -88,30 +88,31 @@
             btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += btnEliminar_Click;
             // 
-            // dgvMedicos
+            // dgvCitas
             // 
-            dgvMedicos.AllowUserToAddRows = false;
-            dgvMedicos.AllowUserToDeleteRows = false;
-            dgvMedicos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvMedicos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvMedicos.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.PaleTurquoise;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.DarkCyan;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvMedicos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvMedicos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMedicos.Columns.AddRange(new DataGridViewColumn[] { ID, IDM, FECHA, MEDICO, PACIENTE, MOTIVO_CONSULTA });
-            dgvMedicos.EnableHeadersVisualStyles = false;
-            dgvMedicos.Location = new Point(16, 27);
-            dgvMedicos.Name = "dgvMedicos";
-            dgvMedicos.ReadOnly = true;
-            dgvMedicos.RowTemplate.Height = 25;
-            dgvMedicos.Size = new Size(768, 345);
-            dgvMedicos.TabIndex = 19;
+            dgvCitas.AllowUserToAddRows = false;
+            dgvCitas.AllowUserToDeleteRows = false;
+            dgvCitas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvCitas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCitas.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.PaleTurquoise;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DarkCyan;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvCitas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvCitas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCitas.Columns.AddRange(new DataGridViewColumn[] { ID, IDM, FECHA, MEDICO, PACIENTE, MOTIVO_CONSULTA });
+            dgvCitas.EnableHeadersVisualStyles = false;
+            dgvCitas.Location = new Point(16, 27);
+            dgvCitas.Name = "dgvCitas";
+            dgvCitas.ReadOnly = true;
+            dgvCitas.RowTemplate.Height = 25;
+            dgvCitas.Size = new Size(768, 345);
+            dgvCitas.TabIndex = 19;
+            dgvCitas.SelectionChanged += dgvMedicos_SelectionChanged;
             // 
             // ID
             // 
@@ -182,12 +183,12 @@
             Controls.Add(btnSalir);
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
-            Controls.Add(dgvMedicos);
+            Controls.Add(dgvCitas);
             Name = "frmCitasGrid";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Citas";
             Load += CitasGrid_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvMedicos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCitas).EndInit();
             ResumeLayout(false);
         }
 
@@ -196,7 +197,7 @@
         private Button btnSalir;
         private Button btnModificar;
         private Button btnEliminar;
-        private DataGridView dgvMedicos;
+        private DataGridView dgvCitas;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn IDM;
         private DataGridViewTextBoxColumn FECHA;

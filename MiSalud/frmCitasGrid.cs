@@ -35,10 +35,10 @@ namespace MiSalud
 
                 if (result == DialogResult.Yes)
                 {
-                    if (dgvMedicos.SelectedCells.Count > 0)
+                    if (dgvCitas.SelectedCells.Count > 0)
                     {
-                        int fila = dgvMedicos.SelectedCells[0].RowIndex;
-                        VarGlobal.EjecutaSentencia("DELETE FROM CITAS WHERE ID = " + dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
+                        int fila = dgvCitas.SelectedCells[0].RowIndex;
+                        VarGlobal.EjecutaSentencia("DELETE FROM CITAS WHERE ID = " + dgvCitas.Rows[fila].Cells["ID"].Value.ToString());
                         CargarGrid();
                     }
                 }
@@ -51,11 +51,11 @@ namespace MiSalud
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (dgvMedicos.SelectedCells.Count > 0)
+            if (dgvCitas.SelectedCells.Count > 0)
             {
-                int fila = dgvMedicos.SelectedCells[0].RowIndex;
+                int fila = dgvCitas.SelectedCells[0].RowIndex;
                 frmGestionarCitas frmGestionarCitas = new frmGestionarCitas();
-                frmGestionarCitas.Cita = Convert.ToInt32(dgvMedicos.Rows[fila].Cells["ID"].Value.ToString());
+                frmGestionarCitas.Cita = Convert.ToInt32(dgvCitas.Rows[fila].Cells["ID"].Value.ToString());
                 frmGestionarCitas.Medico = this.Medico;
                 frmGestionarCitas.Usuario = this.Usuario;
                 frmGestionarCitas.Actualiza = true;
@@ -80,17 +80,23 @@ namespace MiSalud
         {
             try
             {
-                if (this.Usuario != 2)
+                if (this.Usuario == 0)
+                {
+                    DataTable tabla = VarGlobal.EjecutaConsulta("SELECT C.ID, C.ID_MEDICO AS IDM, CONCAT(C.FECHA || ' ' || C.HORA || 'H') AS FECHA, M.NOMBRE AS MEDICO, P.NOMBRE AS PACIENTE, C.MOTIVO_CONSULTA FROM citas AS C " +
+                        "LEFT JOIN MEDICOS AS M ON C.ID_MEDICO = M.ID LEFT JOIN PACIENTES AS P ON C.ID_PACIENTE = P.ID WHERE C.ID_MEDICO = " + this.Medico + " AND C.FECHA > current_date");
+                    dgvCitas.DataSource = tabla;
+                }
+                if (this.Usuario == 1)
                 {
                     DataTable tabla = VarGlobal.EjecutaConsulta("SELECT C.ID, C.ID_MEDICO AS IDM, CONCAT(C.FECHA || ' ' || C.HORA || 'H') AS FECHA, M.NOMBRE AS MEDICO, P.NOMBRE AS PACIENTE, C.MOTIVO_CONSULTA FROM citas AS C " +
                         "LEFT JOIN MEDICOS AS M ON C.ID_MEDICO = M.ID LEFT JOIN PACIENTES AS P ON C.ID_PACIENTE = P.ID WHERE C.ID_MEDICO = " + this.Medico);
-                    dgvMedicos.DataSource = tabla;
+                    dgvCitas.DataSource = tabla;
                 }
-                else
+                if (this.Usuario == 2)
                 {
                     DataTable tabla = VarGlobal.EjecutaConsulta("SELECT C.ID, C.ID_MEDICO AS IDM, CONCAT(C.FECHA || ' ' || C.HORA || 'H') AS FECHA, M.NOMBRE AS MEDICO, P.NOMBRE AS PACIENTE, C.MOTIVO_CONSULTA FROM citas AS C " +
                         "LEFT JOIN MEDICOS AS M ON C.ID_MEDICO = M.ID LEFT JOIN PACIENTES AS P ON C.ID_PACIENTE = P.ID WHERE C.ID_PACIENTE = " + this.Paciente);
-                    dgvMedicos.DataSource = tabla;
+                    dgvCitas.DataSource = tabla;
                 }
             }
             catch (Exception ex)
@@ -107,6 +113,22 @@ namespace MiSalud
             frmGestionarCitas.Actualiza = false;
             frmGestionarCitas.ShowDialog();
             CargarGrid();
+        }
+
+        private void dgvMedicos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (this.Usuario == 2)
+            {
+                if (dgvCitas.SelectedCells.Count > 0)
+                {
+                    DateTime fecha = Convert.ToDateTime(dgvCitas.SelectedRows[0].Cells["FECHA"].Value);
+                    if (fecha < DateTime.Now)
+                    {
+                        btnModificar.Enabled = false;
+                    }
+                }
+
+            }
         }
     }
 }
