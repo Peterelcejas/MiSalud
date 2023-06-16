@@ -173,7 +173,7 @@
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(97, 30);
             lblTelefono.TabIndex = 65;
-            lblTelefono.Text = "Telefono:";
+            lblTelefono.Text = "Teléfono:";
             // 
             // lblCiudad
             // 

@@ -89,12 +89,12 @@ namespace MiSalud
             if (!(txtUsuario.Text.Length > 0 && txtContrasegna.Text.Length > 0 && txtNombre.Text.Length > 0 && txtApellidos.Text.Length > 0 && txtCiudad.Text.Length > 0 &&
                 txtCentro.Text.Length > 0 && txtTelefono.Text.Length > 0 && txtEmail.Text.Length > 0) && !this.Actualiza)
             {
-                MessageBox.Show("Tienes que rellenar todos los campos para introducir un medico.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tienes que rellenar todos los campos para introducir un médico.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (!(txtNombre.Text.Length > 0 && txtApellidos.Text.Length > 0 && txtCiudad.Text.Length > 0 &&
                 txtCentro.Text.Length > 0 && txtTelefono.Text.Length > 0 && txtEmail.Text.Length > 0))
             {
-                MessageBox.Show("Tienes que rellenar todos los campos para actualizar el medico.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tienes que rellenar todos los campos para actualizar el médico.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -163,7 +163,7 @@ namespace MiSalud
                     DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM USUARIOS WHERE NOMBRE_CUENTA = '" + txtUsuario.Text.Replace(" ", "") + "'");
                     if (tabla.Rows.Count > 0)
                     {
-                        MessageBox.Show("Ya existe un usuario con esa cuenta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Ya existe un usuario con ese nombre de cuenta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                         return false;
                     }

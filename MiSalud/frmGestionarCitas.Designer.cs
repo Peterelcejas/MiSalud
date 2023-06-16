@@ -59,7 +59,7 @@
             lblMedico.Name = "lblMedico";
             lblMedico.Size = new Size(87, 30);
             lblMedico.TabIndex = 62;
-            lblMedico.Text = "Medico:";
+            lblMedico.Text = "Médico:";
             // 
             // btnCancelar
             // 

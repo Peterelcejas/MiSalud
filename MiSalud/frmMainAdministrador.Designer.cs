@@ -99,7 +99,7 @@
             btnMedicos.Margin = new Padding(8, 0, 8, 0);
             btnMedicos.Name = "btnMedicos";
             btnMedicos.Size = new Size(50, 50);
-            btnMedicos.Text = "Medicos";
+            btnMedicos.Text = "Médicos";
             btnMedicos.ToolTipText = "Medicos";
             btnMedicos.Click += btnMedicos_Click;
             // 

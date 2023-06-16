@@ -91,7 +91,7 @@ namespace MiSalud
                 DataTable tabla = VarGlobal.EjecutaConsulta("SELECT * FROM USUARIOS WHERE NOMBRE_CUENTA = '" + txtUsuario.Text.Replace(" ", "") + "'");
                 if (tabla.Rows.Count > 0)
                 {
-                    MessageBox.Show("Ya existe un usuario con esa cuenta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Ya existe un usuario con ese nombre de cuenta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     return false;
                 }
