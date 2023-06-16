@@ -123,7 +123,7 @@ namespace MiSalud
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (!(cboMedico.SelectedIndex != 0 && cboHora.SelectedIndex != 0))
+            if (!(cboMedico.Text.Length > 0 && cboHora.SelectedIndex != 0))
             {
                 MessageBox.Show("Tienes que rellenar todos los campos para actualizar el paciente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
