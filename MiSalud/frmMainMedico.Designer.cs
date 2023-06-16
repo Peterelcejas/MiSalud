@@ -96,14 +96,14 @@
             // tsmCitas
             // 
             tsmCitas.Name = "tsmCitas";
-            tsmCitas.Size = new Size(180, 22);
+            tsmCitas.Size = new Size(124, 22);
             tsmCitas.Text = "&Citas";
             tsmCitas.Click += tsmCitas_Click;
             // 
             // tsmPacientes
             // 
             tsmPacientes.Name = "tsmPacientes";
-            tsmPacientes.Size = new Size(180, 22);
+            tsmPacientes.Size = new Size(124, 22);
             tsmPacientes.Text = "&Pacientes";
             tsmPacientes.Click += tsmPacientes_Click;
             // 
@@ -116,7 +116,7 @@
             Controls.Add(toolStrip1);
             Controls.Add(mnsMenu);
             Name = "frmMainMedico";
-            Text = "frmMainMedico";
+            Text = "Médico";
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             mnsMenu.ResumeLayout(false);
