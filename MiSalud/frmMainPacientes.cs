@@ -64,8 +64,8 @@ namespace MiSalud
         {
             try
             {
-                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT P.ID FROM USUARIOS AS S LEFT JOIN PACIENTES AS P ON S.ID = P.ID_USUARIO WHERE S.ID = " + this.IdUsuario); 
-                
+                DataTable tabla = VarGlobal.EjecutaConsulta("SELECT P.ID FROM USUARIOS AS S LEFT JOIN PACIENTES AS P ON S.ID = P.ID_USUARIO WHERE S.ID = " + this.IdUsuario);
+
                 frmGridHistoriales frmGridHistoriales = new frmGridHistoriales();
                 frmGridHistoriales.Usuario = this.Usuario;
                 frmGridHistoriales.Paciente = Convert.ToInt32(tabla.Rows[0]["ID"].ToString());
@@ -75,7 +75,7 @@ namespace MiSalud
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
     }
 }
