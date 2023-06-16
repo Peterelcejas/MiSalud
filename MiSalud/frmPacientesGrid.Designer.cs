@@ -134,6 +134,7 @@
             dgvPacientes.Size = new Size(800, 361);
             dgvPacientes.TabIndex = 19;
             dgvPacientes.CellClick += dgvPacientes_CellClick;
+            dgvPacientes.ColumnHeaderMouseClick += dgvPacientes_ColumnHeaderMouseClick;
             // 
             // ID
             // 

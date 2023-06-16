@@ -72,6 +72,7 @@
             dgvMedicos.Size = new Size(768, 345);
             dgvMedicos.TabIndex = 0;
             dgvMedicos.CellClick += dgvMedicos_CellClick;
+            dgvMedicos.ColumnHeaderMouseClick += dgvMedicos_ColumnHeaderMouseClick;
             // 
             // ID
             // 

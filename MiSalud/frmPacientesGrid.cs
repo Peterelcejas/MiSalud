@@ -122,5 +122,14 @@ namespace MiSalud
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvPacientes_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewRow fila in dgvPacientes.Rows)
+            {
+                DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)fila.Cells["btnHistorial"];
+                buttonCell.Value = "Historial";
+            }
+        }
     }
 }

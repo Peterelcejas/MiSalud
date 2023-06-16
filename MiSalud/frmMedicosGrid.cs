@@ -109,5 +109,15 @@ namespace MiSalud
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvMedicos_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewRow fila in dgvMedicos.Rows)
+            {
+                DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)fila.Cells["btnCitas"];
+
+                buttonCell.Value = "Citas";
+            }
+        }
     }
 }
