@@ -172,6 +172,11 @@ namespace MiSalud
                 cboMedico.DataSource = medicos;
                 cboMedico.DisplayMember = "NOMBRE";
                 cboMedico.ValueMember = "ID";
+
+                DataTable cita = VarGlobal.EjecutaConsulta("SELECT CITAS.MOTIVO_CONSULTA FROM CITAS LEFT JOIN MEDICOS ON CITAS.ID_MEDICO = MEDICOS.ID" +
+                    " WHERE CITAS.ID = " + this.Cita);
+
+                rtbMotivo.Text = cita.Rows[0]["MOTIVO_CONSULTA"].ToString();
             }
             catch (Exception ex)
             {
@@ -223,7 +228,7 @@ namespace MiSalud
                 if (this.Actualiza)
                 {
                     VarGlobal.EjecutaSentencia("UPDATE CITAS SET id_medico = (SELECT ID FROM MEDICOS WHERE NOMBRE = '" + cboMedico.Text + "'), fecha = '" + mtcFecha.SelectionStart.ToString() +
-                        "', hora = " + Convert.ToInt32(cboHora.Text) + " WHERE id = " + this.Cita);
+                        "', hora = " + Convert.ToInt32(cboHora.Text) + ", motivo_consulta = '" + rtbMotivo.Text + "' WHERE id = " + this.Cita);
                 }
                 else
                 {
